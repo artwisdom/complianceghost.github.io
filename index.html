@@ -117,70 +117,48 @@
         .orb {
             position: absolute;
             border-radius: 50%;
-            filter: blur(80px);
-            opacity: 0.7;
-            transition: transform 0.4s ease-out;
+            filter: blur(50px);
+            opacity: 0.9;
         }
         
         .orb-1 {
             width: 500px;
             height: 500px;
-            background: radial-gradient(circle, rgba(78, 205, 196, 0.6) 0%, rgba(78, 205, 196, 0) 70%);
-            top: -150px;
-            right: -100px;
-            animation: floatOrb1 12s ease-in-out infinite;
+            background: radial-gradient(circle, rgba(78, 205, 196, 0.8) 0%, rgba(78, 205, 196, 0) 65%);
+            top: -80px;
+            right: -50px;
         }
         
         .orb-2 {
             width: 450px;
             height: 450px;
-            background: radial-gradient(circle, rgba(46, 204, 113, 0.5) 0%, rgba(46, 204, 113, 0) 70%);
-            bottom: -120px;
-            left: -120px;
-            animation: floatOrb2 15s ease-in-out infinite;
+            background: radial-gradient(circle, rgba(46, 204, 113, 0.7) 0%, rgba(46, 204, 113, 0) 65%);
+            bottom: -60px;
+            left: -60px;
         }
         
         .orb-3 {
             width: 300px;
             height: 300px;
-            background: radial-gradient(circle, rgba(78, 205, 196, 0.4) 0%, rgba(46, 204, 113, 0.2) 50%, transparent 70%);
+            background: radial-gradient(circle, rgba(78, 205, 196, 0.6) 0%, rgba(46, 204, 113, 0.3) 50%, transparent 65%);
             top: 50%;
             left: 50%;
             margin-left: -150px;
             margin-top: -150px;
-            animation: floatOrb3 10s ease-in-out infinite;
         }
         
-        @keyframes floatOrb1 {
-            0%, 100% { transform: translate(0, 0); }
-            50% { transform: translate(-30px, 30px); }
-        }
-        
-        @keyframes floatOrb2 {
-            0%, 100% { transform: translate(0, 0); }
-            50% { transform: translate(40px, -25px); }
-        }
-        
-        @keyframes floatOrb3 {
-            0%, 100% { transform: translate(0, 0); }
-            33% { transform: translate(20px, -20px); }
-            66% { transform: translate(-15px, 15px); }
-        }
-        
-        .light-bg-effects:hover .orb {
-            animation-play-state: paused;
-        }
+        /* Orb movement driven by JavaScript */
         
         .light-bg-effects > .container { position: relative; z-index: 1; }
         
-        .problem-section .orb-1 { right: -100px; top: -150px; }
-        .problem-section .orb-2 { left: -100px; bottom: -100px; }
+        .problem-section .orb-1 { right: -30px; top: -80px; }
+        .problem-section .orb-2 { left: -40px; bottom: -50px; }
         
-        .how-section .orb-1 { left: -80px; top: -80px; right: auto; }
-        .how-section .orb-2 { right: -60px; bottom: -60px; left: auto; }
+        .how-section .orb-1 { left: -40px; top: -50px; right: auto; }
+        .how-section .orb-2 { right: -30px; bottom: -40px; left: auto; }
         
-        .testimonial-section .orb-1 { right: 10%; top: -120px; width: 300px; height: 300px; }
-        .testimonial-section .orb-2 { left: 5%; bottom: -80px; width: 280px; height: 280px; }
+        .testimonial-section .orb-1 { right: 10%; top: -60px; width: 350px; height: 350px; }
+        .testimonial-section .orb-2 { left: 5%; bottom: -40px; width: 320px; height: 320px; }
         .testimonial-section .orb-3 { display: none; }
 
         /* PROBLEM */
@@ -189,12 +167,12 @@
         .problem-section h2 { color: var(--text-dark); }
         .problem-section .section-desc { color: #64748b; }
         .problem-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
-        .problem-card { background: white; border: 1px solid #e2e8f0; border-radius: var(--radius-lg); padding: 28px; }
+        .problem-card { background: white; border: 1px solid #e2e8f0; border-radius: var(--radius-lg); padding: 28px; display: flex; flex-direction: column; }
         .problem-card:hover { box-shadow: 0 10px 20px rgba(0,0,0,0.08); transform: translateY(-4px); transition: all 0.3s; }
         .problem-icon { width: 52px; height: 52px; background: rgba(239,68,68,0.1); border-radius: var(--radius-md); display: flex; align-items: center; justify-content: center; font-size: 26px; margin-bottom: 16px; }
         .problem-card h3 { color: var(--text-dark); margin-bottom: 10px; font-size: 1.1rem; }
-        .problem-card p { color: #64748b; font-size: 0.95rem; margin-bottom: 14px; }
-        .problem-stat { display: inline-flex; padding: 6px 12px; background: rgba(239,68,68,0.1); border-radius: var(--radius-sm); font-size: 0.85rem; font-weight: 600; color: var(--danger); }
+        .problem-card p { color: #64748b; font-size: 0.95rem; margin-bottom: 14px; flex-grow: 1; }
+        .problem-stat { display: inline-flex; padding: 6px 12px; background: rgba(239,68,68,0.1); border-radius: var(--radius-sm); font-size: 0.85rem; font-weight: 600; color: var(--danger); align-self: flex-start; margin-top: auto; }
 
         /* SERVICES */
         .services-section { background: var(--bg-secondary); }
@@ -220,7 +198,7 @@
 
         /* PRICING */
         .pricing-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; max-width: 900px; margin: 0 auto; }
-        .pricing-card { background: var(--bg-card); border: 1px solid var(--border-light); border-radius: var(--radius-xl); padding: 36px; position: relative; }
+        .pricing-card { background: var(--bg-card); border: 1px solid var(--border-light); border-radius: var(--radius-xl); padding: 36px; position: relative; display: flex; flex-direction: column; }
         .pricing-card.featured { border: 2px solid var(--green); }
         .pricing-card.featured::before { content: 'Most Popular'; position: absolute; top: -12px; left: 50%; transform: translateX(-50%); background: var(--green); color: white; padding: 5px 18px; border-radius: 100px; font-size: 0.8rem; font-weight: 600; }
         .pricing-label { font-size: 0.8rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 4px; }
@@ -230,7 +208,7 @@
         .pricing-amount { font-size: 3rem; font-weight: 700; }
         .pricing-period { font-size: 1rem; color: var(--text-muted); }
         .pricing-desc { font-size: 0.95rem; margin-bottom: 24px; padding-bottom: 24px; border-bottom: 1px solid var(--border); }
-        .pricing-features { list-style: none; margin-bottom: 28px; }
+        .pricing-features { list-style: none; margin-bottom: 28px; flex-grow: 1; }
         .pricing-features li { display: flex; align-items: flex-start; gap: 10px; padding: 8px 0; font-size: 0.95rem; }
         .pricing-features .check { color: var(--green); font-weight: bold; }
         .pricing-card .btn { width: 100%; }
@@ -668,7 +646,7 @@
         </div>
         <div class="cta-contact">
             <span>Questions? Reach out:</span>
-            <a href="mailto:info@complianceghost.com">✉️ info@complianceghost.com</a>
+            <a href="/cdn-cgi/l/email-protection#2841464e47684b474558444149464b4d4f40475b5c064b4745">✉️ <span class="__cf_email__" data-cfemail="422b2c242d02212d2f322e2b232c2127252a2d31366c212d2f">[email&#160;protected]</span></a>
             <a href="tel:+15086895074">📞 (508) 689-5074</a>
         </div>
     </div>
@@ -685,7 +663,7 @@
                 <a href="#services">Services</a>
                 <a href="#pricing">Pricing</a>
                 <a href="#faq">FAQ</a>
-                <a href="mailto:info@complianceghost.com">Contact</a>
+                <a href="/cdn-cgi/l/email-protection#9df4f3fbf2ddfef2f0edf1f4fcf3fef8faf5f2eee9b3fef2f0">Contact</a>
             </div>
             <div class="social-links">
                 <a href="https://x.com/Comp_Ghost" target="_blank">𝕏</a>
@@ -774,7 +752,7 @@
     </div>
 </div>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
     // State
     let paymentType = 'full'; // 'full' or 'installment'
     let shieldBilling = 'monthly'; // 'monthly' or 'annual'
@@ -784,34 +762,92 @@
         document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 50);
     });
     
-    // Mouse-move parallax for gradient orbs
+    // Pure JS animated orbs — always floating, flee from cursor on hover
     document.addEventListener('DOMContentLoaded', function() {
-        const lightSections = document.querySelectorAll('.light-bg-effects');
+        var sections = document.querySelectorAll('.light-bg-effects');
+        var allOrbs = [];
         
-        lightSections.forEach(section => {
-            section.addEventListener('mousemove', function(e) {
-                const orbs = this.querySelectorAll('.orb');
-                const rect = this.getBoundingClientRect();
-                const mouseX = e.clientX - rect.left;
-                const mouseY = e.clientY - rect.top;
-                const centerX = rect.width / 2;
-                const centerY = rect.height / 2;
-                
-                orbs.forEach((orb, index) => {
-                    const speed = (index + 1) * 0.05;
-                    const x = (mouseX - centerX) * speed;
-                    const y = (mouseY - centerY) * speed;
-                    orb.style.transform = 'translate(' + x + 'px, ' + y + 'px)';
+        sections.forEach(function(section) {
+            var orbs = section.querySelectorAll('.orb');
+            var sectionData = { mouseX: null, mouseY: null, hovering: false, el: section };
+            
+            orbs.forEach(function(orb, i) {
+                allOrbs.push({
+                    el: orb,
+                    section: sectionData,
+                    x: 0, y: 0,
+                    vx: 0, vy: 0,
+                    floatRadius: [60, 50, 35][i] || 40,
+                    floatSpeedX: [0.0004, 0.00035, 0.0005][i] || 0.0004,
+                    floatSpeedY: [0.00032, 0.00045, 0.00038][i] || 0.0004,
+                    phase: i * 2.2,
+                    fleeStrength: [150, 120, 100][i] || 100,
+                    damping: 0.93
                 });
             });
             
+            section.addEventListener('mousemove', function(e) {
+                var rect = section.getBoundingClientRect();
+                sectionData.mouseX = e.clientX - rect.left;
+                sectionData.mouseY = e.clientY - rect.top;
+                sectionData.hovering = true;
+            });
+            
             section.addEventListener('mouseleave', function() {
-                const orbs = this.querySelectorAll('.orb');
-                orbs.forEach(orb => {
-                    orb.style.transform = 'translate(0px, 0px)';
-                });
+                sectionData.hovering = false;
             });
         });
+        
+        var last = performance.now();
+        
+        function tick(now) {
+            var dt = Math.min((now - last) / 16, 3);
+            last = now;
+            
+            for (var i = 0; i < allOrbs.length; i++) {
+                var o = allOrbs[i];
+                
+                // Ambient float target
+                var t = now * o.floatSpeedX + o.phase;
+                var targetX = Math.sin(t) * o.floatRadius;
+                var targetY = Math.cos(now * o.floatSpeedY + o.phase + 1.3) * o.floatRadius * 0.8;
+                
+                // Cursor flee
+                if (o.section.hovering && o.section.mouseX !== null) {
+                    var rect = o.section.el.getBoundingClientRect();
+                    var orbRect = o.el.getBoundingClientRect();
+                    var cx = orbRect.left - rect.left + orbRect.width / 2;
+                    var cy = orbRect.top - rect.top + orbRect.height / 2;
+                    var dx = cx - o.section.mouseX;
+                    var dy = cy - o.section.mouseY;
+                    var dist = Math.sqrt(dx * dx + dy * dy);
+                    
+                    if (dist < 500 && dist > 1) {
+                        var force = o.fleeStrength * Math.pow(1 - dist / 500, 2);
+                        o.vx += (dx / dist) * force * dt * 0.05;
+                        o.vy += (dy / dist) * force * dt * 0.05;
+                    }
+                }
+                
+                // Spring toward float target
+                o.vx += (targetX - o.x) * 0.01 * dt;
+                o.vy += (targetY - o.y) * 0.01 * dt;
+                
+                // Damping
+                o.vx *= Math.pow(o.damping, dt);
+                o.vy *= Math.pow(o.damping, dt);
+                
+                // Update
+                o.x += o.vx * dt;
+                o.y += o.vy * dt;
+                
+                o.el.style.transform = 'translate(' + o.x.toFixed(1) + 'px,' + o.y.toFixed(1) + 'px)';
+            }
+            
+            requestAnimationFrame(tick);
+        }
+        
+        requestAnimationFrame(tick);
     });
     
     // Smooth scroll for anchor links
@@ -952,15 +988,4 @@
     }
     
     // Close modal on overlay click
-    document.getElementById('checkoutModal').addEventListener('click', function(e) {
-        if (e.target === this) closeCheckout();
-    });
-    
-    // Close modal on Escape key
-    document.addEventListener('keydown', function(e) {
-        if (e.key === 'Escape') closeCheckout();
-    });
-</script>
-
-</body>
-</html>
+    document.getEl
