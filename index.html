@@ -588,7 +588,7 @@
         </div>
         <div class="cta-contact">
             <span>Questions? Reach out:</span>
-            <a href="mailto:info@complianceghost.com">✉️ info@complianceghost.com</a>
+            <a href="/cdn-cgi/l/email-protection#d5bcbbb3ba95b6bab8a5b9bcb4bbb6b0b2bdbaa6a1fbb6bab8">✉️ <span class="__cf_email__" data-cfemail="5a33343c351a3935372a36333b34393f3d3235292e74393537">[email&#160;protected]</span></a>
             <a href="tel:+15086895074">📞 (508) 689-5074</a>
         </div>
     </div>
@@ -605,7 +605,7 @@
                 <a href="#services">Services</a>
                 <a href="#pricing">Pricing</a>
                 <a href="#faq">FAQ</a>
-                <a href="mailto:info@complianceghost.com">Contact</a>
+                <a href="/cdn-cgi/l/email-protection#365f5850597655595b465a5f57585553515e5945421855595b">Contact</a>
             </div>
             <div class="social-links">
                 <a href="https://x.com/Comp_Ghost" target="_blank">𝕏</a>
@@ -694,7 +694,7 @@
     </div>
 </div>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
     // State
     let paymentType = 'full'; // 'full' or 'installment'
     let shieldBilling = 'monthly'; // 'monthly' or 'annual'
@@ -911,33 +911,23 @@
     function proceedToCheckout() {
         const shieldChecked = document.getElementById('shieldAddon').checked;
         
-        // Stripe Payment Links (LIVE MODE)
-        // Update these URLs when you create the new Stripe links for $997 and payment plans
-        const kitOnlyLink = 'https://buy.stripe.com/eVq5kC33NbsN7O76LT1Nu02';
-        const kitPlusShieldLink = 'https://buy.stripe.com/dRm3cu7k31Sd5FZb291Nu03';
+        // Stripe Payment Links (LIVE MODE - $997 pricing)
+        const links = {
+            kitFull:           'https://buy.stripe.com/8x25kC33N7cxfgz3zH1Nu04',
+            kitInstallment:    'https://buy.stripe.com/7sYdR8eMv54p7O76LT1Nu05',
+            kitShieldMonthly:  'https://buy.stripe.com/00wbJ0eMveEZ8Sbeel1Nu06',
+            kitShieldAnnual:   'https://buy.stripe.com/9B6aEW33NeEZecv0nv1Nu07'
+        };
         
-        // TODO: Add separate Stripe links for:
-        // - Kit only payment plan ($349 × 3)
-        // - Kit + Shield annual ($997 + $890/yr after trial)
-        // - Kit payment plan + Shield monthly
-        // - Kit payment plan + Shield annual
-        
-        if (shieldChecked) {
-            window.open(kitPlusShieldLink, '_blank');
+        let targetLink;
+        if (!shieldChecked) {
+            targetLink = paymentType === 'full' ? links.kitFull : links.kitInstallment;
         } else {
-            window.open(kitOnlyLink, '_blank');
+            targetLink = shieldBilling === 'monthly' ? links.kitShieldMonthly : links.kitShieldAnnual;
         }
+        
+        window.open(targetLink, '_blank');
     }
     
     // Close modal on overlay click
-    document.getElementById('checkoutModal').addEventListener('click', function(e) {
-        if (e.target === this) closeCheckout();
-    });
-
-    // Close modal on Escape key
-    document.addEventListener('keydown', function(e) {
-        if (e.key === 'Escape') closeCheckout();
-    });
-</script>
-</body>
-</html>
+    document
