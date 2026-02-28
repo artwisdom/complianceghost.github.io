@@ -98,68 +98,21 @@
         .section-label { display: inline-block; font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent); margin-bottom: 12px; }
         .section-desc { font-size: 1.05rem; margin-top: 12px; }
 
-        /* PROFESSIONAL BACKGROUND EFFECTS - Gradient Orbs + Dot Grid */
+        /* PARTICLE CONSTELLATION NETWORK */
         .light-bg-effects {
             position: relative;
             overflow: hidden;
-            background-image: radial-gradient(circle, rgba(78, 205, 196, 0.1) 1.5px, transparent 1.5px);
-            background-size: 28px 28px;
         }
         
-        .gradient-orbs {
+        .particle-canvas {
             position: absolute;
-            top: 0; left: 0; right: 0; bottom: 0;
-            overflow: hidden;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
             pointer-events: none;
             z-index: 0;
         }
         
-        .orb {
-            position: absolute;
-            border-radius: 50%;
-            filter: blur(50px);
-            opacity: 0.9;
-        }
-        
-        .orb-1 {
-            width: 500px;
-            height: 500px;
-            background: radial-gradient(circle, rgba(78, 205, 196, 0.8) 0%, rgba(78, 205, 196, 0) 65%);
-            top: -80px;
-            right: -50px;
-        }
-        
-        .orb-2 {
-            width: 450px;
-            height: 450px;
-            background: radial-gradient(circle, rgba(46, 204, 113, 0.7) 0%, rgba(46, 204, 113, 0) 65%);
-            bottom: -60px;
-            left: -60px;
-        }
-        
-        .orb-3 {
-            width: 300px;
-            height: 300px;
-            background: radial-gradient(circle, rgba(78, 205, 196, 0.6) 0%, rgba(46, 204, 113, 0.3) 50%, transparent 65%);
-            top: 50%;
-            left: 50%;
-            margin-left: -150px;
-            margin-top: -150px;
-        }
-        
-        /* Orb movement driven by JavaScript */
-        
         .light-bg-effects > .container { position: relative; z-index: 1; }
-        
-        .problem-section .orb-1 { right: -30px; top: -80px; }
-        .problem-section .orb-2 { left: -40px; bottom: -50px; }
-        
-        .how-section .orb-1 { left: -40px; top: -50px; right: auto; }
-        .how-section .orb-2 { right: -30px; bottom: -40px; left: auto; }
-        
-        .testimonial-section .orb-1 { right: 10%; top: -60px; width: 350px; height: 350px; }
-        .testimonial-section .orb-2 { left: 5%; bottom: -40px; width: 320px; height: 320px; }
-        .testimonial-section .orb-3 { display: none; }
 
         /* PROBLEM */
         .problem-section { background: var(--bg-light); color: var(--text-dark); }
@@ -400,11 +353,7 @@
 
 <!-- PROBLEM -->
 <section class="section problem-section light-bg-effects">
-    <div class="gradient-orbs">
-        <div class="orb orb-1"></div>
-        <div class="orb orb-2"></div>
-        <div class="orb orb-3"></div>
-    </div>
+    <canvas class="particle-canvas"></canvas>
     <div class="container">
         <div class="section-header">
             <div class="section-label">The Problem</div>
@@ -467,11 +416,7 @@
 
 <!-- HOW IT WORKS -->
 <section id="how-it-works" class="section how-section light-bg-effects">
-    <div class="gradient-orbs">
-        <div class="orb orb-1"></div>
-        <div class="orb orb-2"></div>
-        <div class="orb orb-3"></div>
-    </div>
+    <canvas class="particle-canvas"></canvas>
     <div class="container">
         <div class="section-header">
             <div class="section-label">How It Works</div>
@@ -571,10 +516,7 @@
 
 <!-- TESTIMONIAL -->
 <section class="section testimonial-section light-bg-effects">
-    <div class="gradient-orbs">
-        <div class="orb orb-1"></div>
-        <div class="orb orb-2"></div>
-    </div>
+    <canvas class="particle-canvas"></canvas>
     <div class="container">
         <div class="testimonial-card">
             <div class="testimonial-stars">★★★★★</div>
@@ -646,7 +588,7 @@
         </div>
         <div class="cta-contact">
             <span>Questions? Reach out:</span>
-            <a href="/cdn-cgi/l/email-protection#2841464e47684b474558444149464b4d4f40475b5c064b4745">✉️ <span class="__cf_email__" data-cfemail="422b2c242d02212d2f322e2b232c2127252a2d31366c212d2f">[email&#160;protected]</span></a>
+            <a href="mailto:info@complianceghost.com">✉️ info@complianceghost.com</a>
             <a href="tel:+15086895074">📞 (508) 689-5074</a>
         </div>
     </div>
@@ -663,7 +605,7 @@
                 <a href="#services">Services</a>
                 <a href="#pricing">Pricing</a>
                 <a href="#faq">FAQ</a>
-                <a href="/cdn-cgi/l/email-protection#9df4f3fbf2ddfef2f0edf1f4fcf3fef8faf5f2eee9b3fef2f0">Contact</a>
+                <a href="mailto:info@complianceghost.com">Contact</a>
             </div>
             <div class="social-links">
                 <a href="https://x.com/Comp_Ghost" target="_blank">𝕏</a>
@@ -752,7 +694,7 @@
     </div>
 </div>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script>
     // State
     let paymentType = 'full'; // 'full' or 'installment'
     let shieldBilling = 'monthly'; // 'monthly' or 'annual'
@@ -988,4 +930,14 @@
     }
     
     // Close modal on overlay click
-    document.getEl
+    document.getElementById('checkoutModal').addEventListener('click', function(e) {
+        if (e.target === this) closeCheckout();
+    });
+
+    // Close modal on Escape key
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') closeCheckout();
+    });
+</script>
+</body>
+</html>
