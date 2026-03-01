@@ -707,8 +707,8 @@
     // Flowing wave lines with mouse interaction
     document.addEventListener('DOMContentLoaded', function() {
         var WAVE_COUNT = 5;
-        var MOUSE_RADIUS = 250;
-        var MOUSE_STRENGTH = 35;
+        var MOUSE_RADIUS = 220;
+        var MOUSE_STRENGTH = 18;
 
         var systems = [];
 
@@ -784,8 +784,8 @@
 
                 // Smooth the mouse position for fluid interaction
                 if (m.active) {
-                    m.smoothX += (m.x - m.smoothX) * 0.08;
-                    m.smoothY += (m.y - m.smoothY) * 0.08;
+                    m.smoothX += (m.x - m.smoothX) * 0.035;
+                    m.smoothY += (m.y - m.smoothY) * 0.035;
                 } else {
                     m.smoothX += (-9999 - m.smoothX) * 0.03;
                     m.smoothY += (-9999 - m.smoothY) * 0.03;
