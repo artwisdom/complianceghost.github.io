@@ -939,6 +939,19 @@
         paymentType = type;
         document.getElementById('paymentFull').classList.toggle('selected', type === 'full');
         document.getElementById('paymentInstallment').classList.toggle('selected', type === 'installment');
+
+        // Hide annual shield option for installment plan (only monthly makes sense)
+        const annualBtn = document.getElementById('shieldAnnual');
+        if (type === 'installment') {
+            annualBtn.style.display = 'none';
+            // Force monthly if annual was selected
+            if (shieldBilling === 'annual') {
+                selectShieldBilling('monthly');
+            }
+        } else {
+            annualBtn.style.display = '';
+        }
+
         updateTotal();
     }
     
@@ -1002,11 +1015,7 @@
             }
         } else {
             if (shieldChecked) {
-                if (shieldBilling === 'monthly') {
-                    totalEl.textContent = '$349 (then $349/mo × 2 + $89/mo)';
-                } else {
-                    totalEl.textContent = '$349 (then $349/mo × 2 + $890/yr)';
-                }
+                totalEl.textContent = '$349 (then $349/mo × 2 + $89/mo)';
             } else {
                 totalEl.textContent = '$349 (+ $349/mo × 2 remaining)';
             }
@@ -1018,15 +1027,18 @@
         
         // Stripe Payment Links (LIVE MODE - $997 pricing)
         const links = {
-            kitFull:           'https://buy.stripe.com/8x25kC33N7cxfgz3zH1Nu04',
-            kitInstallment:    'https://buy.stripe.com/7sYdR8eMv54p7O76LT1Nu05',
-            kitShieldMonthly:  'https://buy.stripe.com/00wbJ0eMveEZ8Sbeel1Nu06',
-            kitShieldAnnual:   'https://buy.stripe.com/9B6aEW33NeEZecv0nv1Nu07'
+            kitFull:                    'https://buy.stripe.com/8x25kC33N7cxfgz3zH1Nu04',
+            kitInstallment:             'https://buy.stripe.com/7sYdR8eMv54p7O76LT1Nu05',
+            kitShieldMonthly:           'https://buy.stripe.com/00wbJ0eMveEZ8Sbeel1Nu06',
+            kitShieldAnnual:            'https://buy.stripe.com/9B6aEW33NeEZecv0nv1Nu07',
+            kitInstallmentShieldMonthly:'https://buy.stripe.com/8x2cN40VF1Sdecv2vD1Nu08'
         };
-        
+
         let targetLink;
         if (!shieldChecked) {
             targetLink = paymentType === 'full' ? links.kitFull : links.kitInstallment;
+        } else if (paymentType === 'installment') {
+            targetLink = links.kitInstallmentShieldMonthly;
         } else {
             targetLink = shieldBilling === 'monthly' ? links.kitShieldMonthly : links.kitShieldAnnual;
         }
