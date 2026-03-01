@@ -704,19 +704,11 @@
         document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 50);
     });
     
-    // Canvas particle network — futuristic floating particles with mouse interaction
+    // Flowing wave lines with mouse interaction
     document.addEventListener('DOMContentLoaded', function() {
-        var PARTICLE_COUNT = 35;
-        var CONNECTION_DIST = 150;
-        var MOUSE_RADIUS = 200;
-        var MOUSE_STRENGTH = 0.02;
-        var COLORS = [
-            { r: 78, g: 205, b: 196 },   // teal #4ecdc4
-            { r: 46, g: 204, b: 113 },   // green #2ecc71
-            { r: 100, g: 180, b: 180 },  // muted teal
-            { r: 13, g: 148, b: 136 },   // deep teal #0d9488
-            { r: 160, g: 210, b: 205 }   // soft sage
-        ];
+        var WAVE_COUNT = 5;
+        var MOUSE_RADIUS = 250;
+        var MOUSE_STRENGTH = 35;
 
         var systems = [];
 
@@ -724,9 +716,26 @@
             var canvas = section.querySelector('.particle-canvas');
             if (!canvas) return;
             var ctx = canvas.getContext('2d');
-            var mouse = { x: null, y: null, active: false };
-            var particles = [];
+            var mouse = { x: -9999, y: -9999, smoothX: -9999, smoothY: -9999, active: false };
             var w = 0, h = 0;
+
+            // Each wave has its own properties
+            var waves = [];
+            for (var i = 0; i < WAVE_COUNT; i++) {
+                waves.push({
+                    baseY: 0,           // set on resize
+                    amplitude: 18 + i * 8,
+                    frequency: 0.003 + i * 0.0008,
+                    speed: 0.0004 + i * 0.00012,
+                    phase: i * 1.2,
+                    lineWidth: 1.8 - i * 0.15,
+                    // Alternate between teal and green tones
+                    color: i % 2 === 0
+                        ? { r: 78, g: 205, b: 196 }    // teal
+                        : { r: 46, g: 204, b: 113 },   // green
+                    alpha: 0.08 + (WAVE_COUNT - i) * 0.015
+                });
+            }
 
             function resize() {
                 var rect = section.getBoundingClientRect();
@@ -738,28 +747,13 @@
                 canvas.style.width = w + 'px';
                 canvas.style.height = h + 'px';
                 ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-            }
-
-            function createParticles() {
-                particles = [];
-                for (var i = 0; i < PARTICLE_COUNT; i++) {
-                    var c = COLORS[Math.floor(Math.random() * COLORS.length)];
-                    particles.push({
-                        x: Math.random() * w,
-                        y: Math.random() * h,
-                        vx: (Math.random() - 0.5) * 0.3,
-                        vy: (Math.random() - 0.5) * 0.3,
-                        radius: 3 + Math.random() * 4,
-                        color: c,
-                        alpha: 0.12 + Math.random() * 0.18,
-                        phase: Math.random() * Math.PI * 2,
-                        drift: 0.15 + Math.random() * 0.25
-                    });
+                // Distribute wave baselines evenly across section height
+                for (var i = 0; i < waves.length; i++) {
+                    waves[i].baseY = h * (0.2 + (i / (waves.length - 1)) * 0.6);
                 }
             }
 
             resize();
-            createParticles();
 
             section.addEventListener('mousemove', function(e) {
                 var rect = section.getBoundingClientRect();
@@ -772,121 +766,101 @@
                 mouse.active = false;
             });
 
-            systems.push({ ctx: ctx, particles: particles, mouse: mouse, section: section, resize: resize, w: function() { return w; }, h: function() { return h; } });
+            systems.push({ ctx: ctx, waves: waves, mouse: mouse, section: section, resize: resize, w: function() { return w; }, h: function() { return h; } });
         });
 
         window.addEventListener('resize', function() {
             systems.forEach(function(s) { s.resize(); });
         });
 
-        var lastTime = performance.now();
-
         function animate(now) {
-            var dt = Math.min((now - lastTime) / 16, 3);
-            lastTime = now;
-
             for (var s = 0; s < systems.length; s++) {
                 var sys = systems[s];
                 var ctx = sys.ctx;
-                var pts = sys.particles;
+                var wavesArr = sys.waves;
                 var m = sys.mouse;
                 var cw = sys.w();
                 var ch = sys.h();
 
+                // Smooth the mouse position for fluid interaction
+                if (m.active) {
+                    m.smoothX += (m.x - m.smoothX) * 0.08;
+                    m.smoothY += (m.y - m.smoothY) * 0.08;
+                } else {
+                    m.smoothX += (-9999 - m.smoothX) * 0.03;
+                    m.smoothY += (-9999 - m.smoothY) * 0.03;
+                }
+
                 ctx.clearRect(0, 0, cw, ch);
 
-                // Update particles
-                for (var i = 0; i < pts.length; i++) {
-                    var p = pts[i];
+                // Draw each wave
+                for (var wi = 0; wi < wavesArr.length; wi++) {
+                    var wave = wavesArr[wi];
+                    var c = wave.color;
+                    var step = 4; // pixel step for smoothness
 
-                    // Ambient sine drift
-                    p.vx += Math.sin(now * 0.0003 + p.phase) * 0.003 * p.drift * dt;
-                    p.vy += Math.cos(now * 0.00025 + p.phase + 1.5) * 0.003 * p.drift * dt;
+                    // Build points array for this wave
+                    var points = [];
+                    for (var x = -step; x <= cw + step; x += step) {
+                        // Base sine wave
+                        var y = wave.baseY
+                            + Math.sin(x * wave.frequency + now * wave.speed + wave.phase) * wave.amplitude
+                            + Math.sin(x * wave.frequency * 0.6 + now * wave.speed * 0.7 + wave.phase + 2) * wave.amplitude * 0.4;
 
-                    // Mouse attraction
-                    if (m.active && m.x !== null) {
-                        var dx = m.x - p.x;
-                        var dy = m.y - p.y;
+                        // Mouse displacement — push wave away from cursor
+                        var dx = x - m.smoothX;
+                        var dy = y - m.smoothY;
                         var dist = Math.sqrt(dx * dx + dy * dy);
                         if (dist < MOUSE_RADIUS && dist > 1) {
-                            var force = (1 - dist / MOUSE_RADIUS) * MOUSE_STRENGTH * dt;
-                            p.vx += dx / dist * force;
-                            p.vy += dy / dist * force;
+                            var pushStrength = (1 - dist / MOUSE_RADIUS);
+                            pushStrength = pushStrength * pushStrength; // ease-in curve
+                            y += (dy / dist) * pushStrength * MOUSE_STRENGTH;
                         }
+
+                        points.push({ x: x, y: y });
                     }
 
-                    // Velocity damping
-                    p.vx *= 0.985;
-                    p.vy *= 0.985;
-
-                    // Speed limit
-                    var speed = Math.sqrt(p.vx * p.vx + p.vy * p.vy);
-                    if (speed > 1.5) {
-                        p.vx = (p.vx / speed) * 1.5;
-                        p.vy = (p.vy / speed) * 1.5;
-                    }
-
-                    // Move
-                    p.x += p.vx * dt;
-                    p.y += p.vy * dt;
-
-                    // Wrap edges with padding
-                    if (p.x < -20) p.x = cw + 20;
-                    if (p.x > cw + 20) p.x = -20;
-                    if (p.y < -20) p.y = ch + 20;
-                    if (p.y > ch + 20) p.y = -20;
-                }
-
-                // Draw connections
-                for (var i = 0; i < pts.length; i++) {
-                    for (var j = i + 1; j < pts.length; j++) {
-                        var dx = pts[i].x - pts[j].x;
-                        var dy = pts[i].y - pts[j].y;
-                        var dist = Math.sqrt(dx * dx + dy * dy);
-                        if (dist < CONNECTION_DIST) {
-                            var opacity = (1 - dist / CONNECTION_DIST) * 0.06;
-                            var c = pts[i].color;
-                            ctx.beginPath();
-                            ctx.strokeStyle = 'rgba(' + c.r + ',' + c.g + ',' + c.b + ',' + opacity + ')';
-                            ctx.lineWidth = 0.5;
-                            ctx.moveTo(pts[i].x, pts[i].y);
-                            ctx.lineTo(pts[j].x, pts[j].y);
-                            ctx.stroke();
-                        }
-                    }
-                }
-
-                // Draw particles with glow
-                for (var i = 0; i < pts.length; i++) {
-                    var p = pts[i];
-                    var c = p.color;
-
-                    // Outer glow — large, soft blur
-                    var grad = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, p.radius * 8);
-                    grad.addColorStop(0, 'rgba(' + c.r + ',' + c.g + ',' + c.b + ',' + (p.alpha * 0.4) + ')');
-                    grad.addColorStop(0.3, 'rgba(' + c.r + ',' + c.g + ',' + c.b + ',' + (p.alpha * 0.15) + ')');
-                    grad.addColorStop(1, 'rgba(' + c.r + ',' + c.g + ',' + c.b + ',0)');
+                    // Draw the wave line
                     ctx.beginPath();
-                    ctx.fillStyle = grad;
-                    ctx.arc(p.x, p.y, p.radius * 8, 0, Math.PI * 2);
-                    ctx.fill();
+                    ctx.moveTo(points[0].x, points[0].y);
+                    for (var p = 1; p < points.length - 1; p++) {
+                        // Smooth curve through points
+                        var xc = (points[p].x + points[p + 1].x) / 2;
+                        var yc = (points[p].y + points[p + 1].y) / 2;
+                        ctx.quadraticCurveTo(points[p].x, points[p].y, xc, yc);
+                    }
+                    ctx.strokeStyle = 'rgba(' + c.r + ',' + c.g + ',' + c.b + ',' + wave.alpha + ')';
+                    ctx.lineWidth = wave.lineWidth;
+                    ctx.stroke();
 
-                    // Core dot — soft center
+                    // Draw soft glow underneath wave (filled area to bottom)
                     ctx.beginPath();
-                    ctx.fillStyle = 'rgba(' + c.r + ',' + c.g + ',' + c.b + ',' + (p.alpha * 0.6) + ')';
-                    ctx.arc(p.x, p.y, p.radius * 0.6, 0, Math.PI * 2);
+                    ctx.moveTo(points[0].x, points[0].y);
+                    for (var p = 1; p < points.length - 1; p++) {
+                        var xc = (points[p].x + points[p + 1].x) / 2;
+                        var yc = (points[p].y + points[p + 1].y) / 2;
+                        ctx.quadraticCurveTo(points[p].x, points[p].y, xc, yc);
+                    }
+                    ctx.lineTo(cw + step, points[points.length - 1].y);
+                    ctx.lineTo(cw + step, points[points.length - 1].y + 60);
+                    ctx.lineTo(-step, points[0].y + 60);
+                    ctx.closePath();
+                    var glow = ctx.createLinearGradient(0, wave.baseY - 10, 0, wave.baseY + 60);
+                    glow.addColorStop(0, 'rgba(' + c.r + ',' + c.g + ',' + c.b + ',' + (wave.alpha * 0.4) + ')');
+                    glow.addColorStop(1, 'rgba(' + c.r + ',' + c.g + ',' + c.b + ',0)');
+                    ctx.fillStyle = glow;
                     ctx.fill();
                 }
 
-                // Mouse glow when hovering
-                if (m.active && m.x !== null) {
-                    var mg = ctx.createRadialGradient(m.x, m.y, 0, m.x, m.y, 120);
+                // Soft mouse glow
+                if (m.active) {
+                    var mg = ctx.createRadialGradient(m.smoothX, m.smoothY, 0, m.smoothX, m.smoothY, 160);
                     mg.addColorStop(0, 'rgba(78, 205, 196, 0.04)');
-                    mg.addColorStop(0.5, 'rgba(78, 205, 196, 0.01)');
+                    mg.addColorStop(0.5, 'rgba(78, 205, 196, 0.015)');
                     mg.addColorStop(1, 'rgba(78, 205, 196, 0)');
                     ctx.beginPath();
                     ctx.fillStyle = mg;
-                    ctx.arc(m.x, m.y, 120, 0, Math.PI * 2);
+                    ctx.arc(m.smoothX, m.smoothY, 160, 0, Math.PI * 2);
                     ctx.fill();
                 }
             }
