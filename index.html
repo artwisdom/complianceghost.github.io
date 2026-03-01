@@ -706,10 +706,10 @@
     
     // Canvas particle network — futuristic floating particles with mouse interaction
     document.addEventListener('DOMContentLoaded', function() {
-        var PARTICLE_COUNT = 50;
-        var CONNECTION_DIST = 130;
+        var PARTICLE_COUNT = 35;
+        var CONNECTION_DIST = 150;
         var MOUSE_RADIUS = 200;
-        var MOUSE_STRENGTH = 0.025;
+        var MOUSE_STRENGTH = 0.02;
         var COLORS = [
             { r: 78, g: 205, b: 196 },   // teal #4ecdc4
             { r: 46, g: 204, b: 113 },   // green #2ecc71
@@ -749,9 +749,9 @@
                         y: Math.random() * h,
                         vx: (Math.random() - 0.5) * 0.3,
                         vy: (Math.random() - 0.5) * 0.3,
-                        radius: 1.2 + Math.random() * 1.8,
+                        radius: 3 + Math.random() * 4,
                         color: c,
-                        alpha: 0.25 + Math.random() * 0.35,
+                        alpha: 0.12 + Math.random() * 0.18,
                         phase: Math.random() * Math.PI * 2,
                         drift: 0.15 + Math.random() * 0.25
                     });
@@ -844,11 +844,11 @@
                         var dy = pts[i].y - pts[j].y;
                         var dist = Math.sqrt(dx * dx + dy * dy);
                         if (dist < CONNECTION_DIST) {
-                            var opacity = (1 - dist / CONNECTION_DIST) * 0.12;
+                            var opacity = (1 - dist / CONNECTION_DIST) * 0.06;
                             var c = pts[i].color;
                             ctx.beginPath();
                             ctx.strokeStyle = 'rgba(' + c.r + ',' + c.g + ',' + c.b + ',' + opacity + ')';
-                            ctx.lineWidth = 0.6;
+                            ctx.lineWidth = 0.5;
                             ctx.moveTo(pts[i].x, pts[i].y);
                             ctx.lineTo(pts[j].x, pts[j].y);
                             ctx.stroke();
@@ -861,27 +861,28 @@
                     var p = pts[i];
                     var c = p.color;
 
-                    // Outer glow
-                    var grad = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, p.radius * 4);
-                    grad.addColorStop(0, 'rgba(' + c.r + ',' + c.g + ',' + c.b + ',' + (p.alpha * 0.3) + ')');
+                    // Outer glow — large, soft blur
+                    var grad = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, p.radius * 8);
+                    grad.addColorStop(0, 'rgba(' + c.r + ',' + c.g + ',' + c.b + ',' + (p.alpha * 0.4) + ')');
+                    grad.addColorStop(0.3, 'rgba(' + c.r + ',' + c.g + ',' + c.b + ',' + (p.alpha * 0.15) + ')');
                     grad.addColorStop(1, 'rgba(' + c.r + ',' + c.g + ',' + c.b + ',0)');
                     ctx.beginPath();
                     ctx.fillStyle = grad;
-                    ctx.arc(p.x, p.y, p.radius * 4, 0, Math.PI * 2);
+                    ctx.arc(p.x, p.y, p.radius * 8, 0, Math.PI * 2);
                     ctx.fill();
 
-                    // Core dot
+                    // Core dot — soft center
                     ctx.beginPath();
-                    ctx.fillStyle = 'rgba(' + c.r + ',' + c.g + ',' + c.b + ',' + p.alpha + ')';
-                    ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+                    ctx.fillStyle = 'rgba(' + c.r + ',' + c.g + ',' + c.b + ',' + (p.alpha * 0.6) + ')';
+                    ctx.arc(p.x, p.y, p.radius * 0.6, 0, Math.PI * 2);
                     ctx.fill();
                 }
 
                 // Mouse glow when hovering
                 if (m.active && m.x !== null) {
                     var mg = ctx.createRadialGradient(m.x, m.y, 0, m.x, m.y, 120);
-                    mg.addColorStop(0, 'rgba(78, 205, 196, 0.06)');
-                    mg.addColorStop(0.5, 'rgba(78, 205, 196, 0.02)');
+                    mg.addColorStop(0, 'rgba(78, 205, 196, 0.04)');
+                    mg.addColorStop(0.5, 'rgba(78, 205, 196, 0.01)');
                     mg.addColorStop(1, 'rgba(78, 205, 196, 0)');
                     ctx.beginPath();
                     ctx.fillStyle = mg;
