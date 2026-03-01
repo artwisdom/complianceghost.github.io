@@ -652,7 +652,7 @@
                     <input type="checkbox" id="shieldAddon" onchange="updateTotal()">
                     <span class="addon-checkbox"></span>
                     <div class="addon-info">
-                        <div class="addon-name">Compliance Shield <span style="color: var(--green); font-size: 0.8rem;">★ First month FREE</span></div>
+                        <div class="addon-name">Compliance Shield <span id="shieldFreeTag" style="color: var(--green); font-size: 0.8rem;">★ First month FREE</span></div>
                         <div class="addon-price">Ongoing regulatory monitoring & updates</div>
                     </div>
                 </label>
@@ -942,14 +942,17 @@
 
         // Hide annual shield option for installment plan (only monthly makes sense)
         const annualBtn = document.getElementById('shieldAnnual');
+        const freeTag = document.getElementById('shieldFreeTag');
         if (type === 'installment') {
             annualBtn.style.display = 'none';
+            freeTag.style.display = 'none'; // No free trial with installment plan
             // Force monthly if annual was selected
             if (shieldBilling === 'annual') {
                 selectShieldBilling('monthly');
             }
         } else {
             annualBtn.style.display = '';
+            freeTag.style.display = ''; // Show free trial with full payment
         }
 
         updateTotal();
@@ -990,7 +993,12 @@
         const shieldPriceEl = document.getElementById('shieldPrice');
         shieldRow.style.display = shieldChecked ? 'flex' : 'none';
         if (shieldChecked) {
-            if (shieldBilling === 'monthly') {
+            if (paymentType === 'installment') {
+                // No free trial with installment plan
+                shieldLabel.textContent = 'Compliance Shield (monthly)';
+                shieldPriceEl.textContent = '$89/mo';
+                shieldPriceEl.style.color = 'var(--accent)';
+            } else if (shieldBilling === 'monthly') {
                 shieldLabel.textContent = 'Compliance Shield (monthly)';
                 shieldPriceEl.textContent = 'FREE for 30 days';
                 shieldPriceEl.style.color = 'var(--green)';
@@ -1015,7 +1023,7 @@
             }
         } else {
             if (shieldChecked) {
-                totalEl.textContent = '$349 (then $349/mo × 2 + $89/mo)';
+                totalEl.textContent = '$349 + $89 (then $349/mo × 2 + $89/mo)';
             } else {
                 totalEl.textContent = '$349 (+ $349/mo × 2 remaining)';
             }
