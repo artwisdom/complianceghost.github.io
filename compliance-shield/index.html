@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Compliance Shield — Ongoing Protection | Compliance Ghost</title>
+    <meta name="description" content="Compliance Shield provides automatic manual updates, regulation alerts, annual audits, and priority support for $89/month. 30 days free with your Compliance Kit.">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        :root {
+            --bg-primary: #1a2744;
+            --bg-secondary: #1e2d4d;
+            --bg-card: #243656;
+            --bg-light: #f8fafc;
+            --text-primary: #ffffff;
+            --text-secondary: rgba(255,255,255,0.8);
+            --text-muted: rgba(255,255,255,0.6);
+            --text-dark: #1e293b;
+            --accent: #4ecdc4;
+            --accent-glow: rgba(78,205,196,0.15);
+            --green: #2ecc71;
+            --green-light: #3dd87a;
+            --danger: #ef4444;
+            --border: rgba(255,255,255,0.1);
+            --border-light: rgba(255,255,255,0.15);
+            --shadow-lg: 0 10px 40px rgba(0,0,0,0.3);
+            --radius-sm: 8px;
+            --radius-md: 12px;
+            --radius-lg: 16px;
+            --radius-xl: 24px;
+        }
+        body { font-family: 'Plus Jakarta Sans', sans-serif; background: var(--bg-primary); color: var(--text-primary); line-height: 1.6; }
+        h1, h2, h3 { line-height: 1.2; }
+        p { color: var(--text-secondary); }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+
+        /* NAV */
+        nav { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; padding: 6px 0; background: rgba(26,39,68,0.95); backdrop-filter: blur(20px); border-bottom: 1px solid var(--border); }
+        nav .container { display: flex; justify-content: space-between; align-items: center; }
+        .logo { display: flex; align-items: center; text-decoration: none; }
+        .logo img { height: 100px; width: auto; border-radius: 12px; }
+        .nav-links { display: flex; gap: 32px; align-items: center; }
+        .nav-links a { color: var(--text-secondary); text-decoration: none; font-size: 0.9rem; font-weight: 500; }
+        .nav-links a:hover { color: var(--accent); }
+        .nav-cta { background: var(--green); color: white !important; padding: 10px 20px; border-radius: var(--radius-sm); font-weight: 600; }
+        .nav-cta:hover { background: var(--green-light); }
+
+        /* BUTTONS */
+        .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 14px 28px; border-radius: var(--radius-sm); font-weight: 600; font-size: 0.95rem; text-decoration: none; cursor: pointer; border: none; font-family: inherit; transition: all 0.2s; }
+        .btn-primary { background: var(--green); color: white; }
+        .btn-primary:hover { background: var(--green-light); transform: translateY(-2px); box-shadow: 0 8px 25px rgba(46,204,113,0.35); }
+        .btn-secondary { background: transparent; color: var(--text-primary); border: 2px solid var(--accent); }
+        .btn-secondary:hover { background: var(--accent); color: var(--bg-primary); }
+
+        /* HERO */
+        .page-hero { padding: 160px 0 80px; text-align: center; }
+        .page-hero h1 { font-size: 2.8rem; margin-bottom: 12px; }
+        .page-hero .subtitle { font-size: 1.2rem; color: var(--text-secondary); margin-bottom: 32px; }
+        .badge-row { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; margin-bottom: 40px; }
+        .badge { display: inline-flex; align-items: center; gap: 8px; padding: 10px 22px; border-radius: 100px; font-weight: 600; font-size: 0.95rem; }
+        .badge-green { background: var(--green); color: white; }
+        .badge-outline { background: transparent; border: 2px solid var(--text-muted); color: var(--text-primary); }
+
+        /* FEATURES SECTION */
+        .features-section { padding: 80px 0; background: var(--bg-secondary); }
+        .features-section h2 { font-size: 2rem; margin-bottom: 50px; text-align: center; }
+        .features-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; max-width: 900px; margin: 0 auto; }
+        .feature-card { background: var(--bg-card); border: 1px solid var(--border-light); border-radius: var(--radius-lg); padding: 32px; }
+        .feature-icon { width: 52px; height: 52px; background: var(--accent-glow); border-radius: var(--radius-md); display: flex; align-items: center; justify-content: center; font-size: 26px; margin-bottom: 16px; }
+        .feature-card h3 { font-size: 1.15rem; margin-bottom: 10px; }
+        .feature-card p { font-size: 0.95rem; line-height: 1.7; }
+
+        /* WHY SECTION */
+        .why-section { padding: 80px 0; }
+        .why-box { max-width: 800px; margin: 0 auto; background: var(--bg-card); border-left: 4px solid var(--accent); border-radius: var(--radius-lg); padding: 40px; }
+        .why-box h2 { font-size: 1.5rem; margin-bottom: 16px; }
+        .why-box p { font-size: 1.05rem; line-height: 1.8; }
+
+        /* CTA SECTION */
+        .cta-section { padding: 80px 0; background: linear-gradient(135deg, var(--accent) 0%, var(--green) 100%); text-align: center; }
+        .cta-section h2 { font-size: 2rem; color: white; margin-bottom: 12px; }
+        .cta-section p { color: rgba(255,255,255,0.9); font-size: 1.05rem; margin-bottom: 32px; max-width: 600px; margin-left: auto; margin-right: auto; }
+        .cta-section .btn-primary { background: var(--bg-primary); color: white; }
+        .cta-section .btn-primary:hover { background: var(--bg-secondary); }
+        .cta-contact { margin-top: 28px; display: flex; gap: 24px; justify-content: center; flex-wrap: wrap; }
+        .cta-contact a { color: white; text-decoration: none; font-weight: 500; }
+        .cta-contact a:hover { text-decoration: underline; }
+
+        /* FOOTER */
+        footer { padding: 50px 0 30px; }
+        .footer-content { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px; }
+        .footer-logo img { height: 140px; border-radius: 12px; }
+        .footer-links { display: flex; gap: 24px; }
+        .footer-links a { color: var(--text-muted); text-decoration: none; font-size: 0.9rem; }
+        .footer-links a:hover { color: var(--accent); }
+        .social-links { display: flex; gap: 10px; }
+        .social-links a { width: 36px; height: 36px; background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-sm); display: flex; align-items: center; justify-content: center; color: var(--text-muted); text-decoration: none; }
+        .social-links a:hover { background: var(--accent); border-color: var(--accent); color: white; }
+        .footer-bottom { margin-top: 36px; padding-top: 20px; border-top: 1px solid var(--border); text-align: center; font-size: 0.85rem; color: var(--text-muted); }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            .page-hero h1 { font-size: 2rem; }
+            .features-grid { grid-template-columns: 1fr; }
+            .footer-content { flex-direction: column; text-align: center; }
+            .footer-links { flex-wrap: wrap; justify-content: center; }
+            .social-links { justify-content: center; }
+            .nav-links { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+    <div class="container">
+        <a href="/" class="logo">
+            <img src="/logo.png" alt="Compliance Ghost">
+        </a>
+        <div class="nav-links">
+            <a href="/#services">Services</a>
+            <a href="/#how-it-works">How It Works</a>
+            <a href="/#pricing">Pricing</a>
+            <a href="/#faq">FAQ</a>
+            <a href="/#pricing" class="nav-cta">Buy Now</a>
+        </div>
+    </div>
+</nav>
+
+<!-- HERO -->
+<section class="page-hero">
+    <div class="container">
+        <h1>Compliance Shield</h1>
+        <p class="subtitle">Ongoing Protection for Your Business</p>
+        <div class="badge-row">
+            <span class="badge badge-green">$89/month &bull; Cancel Anytime</span>
+            <span class="badge badge-outline">&#9733; 30 Days FREE w/ Kit</span>
+        </div>
+    </div>
+</section>
+
+<!-- WHAT'S INCLUDED -->
+<section class="features-section">
+    <div class="container">
+        <h2>What's Included</h2>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">🔄</div>
+                <h3>Automatic Manual Updates</h3>
+                <p>When regulations change, we update your compliance manual automatically. No action needed on your end — always current, always compliant.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🔔</div>
+                <h3>New Regulation Alerts</h3>
+                <p>Get notified when new HIPAA, OSHA, or Texas regulations affect your business so you can stay ahead of enforcement changes before they become fines.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">📋</div>
+                <h3>Annual Compliance Audit</h3>
+                <p>Yearly review of your compliance program with a written report of recommendations, gaps, and action items tailored to your business.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">✉️</div>
+                <h3>Priority Email Support</h3>
+                <p>Get answers to compliance questions within 24 hours. No waiting on hold, no generic responses — just real expert guidance from our team.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- WHY ONGOING PROTECTION -->
+<section class="why-section">
+    <div class="container">
+        <div class="why-box">
+            <h2>Why Ongoing Protection Matters</h2>
+            <p>Regulations change frequently. Without monitoring, your compliance manual becomes outdated — and you become vulnerable to fines that can reach $50,000+ per violation. The Compliance Shield keeps you protected automatically, so you can focus on running your business with confidence.</p>
+        </div>
+    </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+    <div class="container">
+        <h2>How to Get Started</h2>
+        <p>Add the Compliance Shield when you purchase your Compliance Kit to get 30 days free. Your protection begins immediately after your manual is delivered.</p>
+        <a href="/#pricing" class="btn btn-primary">Get Your Compliance Kit &rarr;</a>
+        <div class="cta-contact">
+            <a href="mailto:info@complianceghost.com">✉️ info@complianceghost.com</a>
+            <a href="tel:+18558344678">📞 (855) 83-GHOST</a>
+        </div>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+    <div class="container">
+        <div class="footer-content">
+            <div class="footer-logo">
+                <img src="/logo.png" alt="Compliance Ghost">
+            </div>
+            <div class="footer-links">
+                <a href="/#services">Services</a>
+                <a href="/#pricing">Pricing</a>
+                <a href="/#faq">FAQ</a>
+                <a href="mailto:info@complianceghost.com">Contact</a>
+            </div>
+            <div class="social-links">
+                <a href="https://x.com/Comp_Ghost" target="_blank">𝕏</a>
+                <a href="https://www.facebook.com/profile.php?id=61583069649941" target="_blank">f</a>
+                <a href="https://www.linkedin.com/in/compliance-ghost-4b080a391/" target="_blank">in</a>
+            </div>
+        </div>
+        <div class="footer-bottom">&copy; 2026 Compliance Ghost. All rights reserved. | AI-powered compliance documentation for small businesses.</div>
+    </div>
+</footer>
+
+</body>
+</html>
