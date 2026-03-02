@@ -127,6 +127,10 @@
         .social-links a { width: 36px; height: 36px; background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-sm); display: flex; align-items: center; justify-content: center; color: var(--text-muted); text-decoration: none; }
         .social-links a:hover { background: var(--accent); border-color: var(--accent); color: white; }
         .footer-bottom { margin-top: 36px; padding-top: 20px; border-top: 1px solid var(--border); text-align: center; font-size: 0.85rem; color: var(--text-muted); }
+        .footer-legal { margin-top: 12px; text-align: center; font-size: 0.8rem; color: var(--text-muted); }
+        .footer-legal a { color: var(--text-muted); text-decoration: none; }
+        .footer-legal a:hover { color: var(--accent); }
+        .footer-disclaimer { text-align: center; font-size: 0.78rem; color: var(--text-muted); max-width: 700px; margin: 12px auto 0; line-height: 1.6; }
         .disclaimer { text-align: center; font-size: 0.8rem; color: var(--text-muted); padding: 0 24px 20px; }
 
         /* RESPONSIVE */
@@ -226,7 +230,7 @@
                 </div>
                 <button type="submit" class="submit-btn" id="submitBtn">Download My Free Assessment &rarr;</button>
                 <div class="error-msg" id="errorMsg">Something went wrong. Please try again or email us at info@complianceghost.com.</div>
-                <p class="form-disclaimer">We respect your privacy. No spam, ever.</p>
+                <p class="form-disclaimer">We respect your privacy. No spam, ever. By submitting, you agree to our <a href="/terms.html" style="color: var(--accent);">Terms</a> &amp; <a href="/privacy.html" style="color: var(--accent);">Privacy Policy</a>. This gap assessment is for informational purposes only and does not constitute legal advice.</p>
             </form>
         </div>
     </div>
@@ -264,9 +268,10 @@
             </div>
         </div>
         <div class="footer-bottom">&copy; 2026 Compliance Ghost. All rights reserved. | AI-powered compliance documentation for small businesses.</div>
+        <div class="footer-legal"><a href="/terms.html">Terms of Service</a> &nbsp;|&nbsp; <a href="/privacy.html">Privacy Policy</a></div>
+        <p class="footer-disclaimer">Compliance Ghost provides compliance documentation tools and educational resources only. Our products do not constitute legal advice and are not a substitute for consultation with a qualified attorney or compliance professional.</p>
     </div>
 </footer>
-<p class="disclaimer">For assessment purposes only &mdash; does not constitute legal advice.</p>
 
 <script>
     let selectedPdf = '';

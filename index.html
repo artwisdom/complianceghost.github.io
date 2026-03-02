@@ -227,6 +227,10 @@
         .social-links a { width: 36px; height: 36px; background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-sm); display: flex; align-items: center; justify-content: center; color: var(--text-muted); text-decoration: none; }
         .social-links a:hover { background: var(--accent); border-color: var(--accent); color: white; }
         .footer-bottom { margin-top: 36px; padding-top: 20px; border-top: 1px solid var(--border); text-align: center; font-size: 0.85rem; color: var(--text-muted); }
+        .footer-legal { margin-top: 12px; text-align: center; font-size: 0.8rem; color: var(--text-muted); }
+        .footer-legal a { color: var(--text-muted); text-decoration: none; }
+        .footer-legal a:hover { color: var(--accent); }
+        .footer-disclaimer { text-align: center; font-size: 0.78rem; color: var(--text-muted); max-width: 700px; margin: 12px auto 0; line-height: 1.6; }
 
         /* CHECKOUT MODAL */
         .modal-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.85); z-index: 2000; align-items: center; justify-content: center; }
@@ -266,6 +270,9 @@
         .checkout-btn { width: 100%; margin-top: 20px; padding: 16px; font-size: 1rem; }
         .checkout-note { margin-top: 14px; font-size: 0.85rem; color: var(--text-muted); text-align: center; }
         .checkout-guarantee { margin-top: 10px; text-align: center; font-size: 0.8rem; color: var(--green); font-weight: 600; }
+        .checkout-consent { margin-top: 10px; font-size: 0.75rem; color: var(--text-muted); text-align: center; line-height: 1.6; }
+        .checkout-consent a { color: var(--text-muted); text-decoration: underline; }
+        .checkout-consent a:hover { color: var(--accent); }
 
         /* RESPONSIVE */
         @media (max-width: 1024px) {
@@ -396,7 +403,7 @@
     <div class="container">
         <div class="section-header">
             <div class="section-label">What You Get</div>
-            <h2>Everything you need to stay compliant</h2>
+            <h2>Everything you need to build your compliance program</h2>
             <p class="section-desc">Comprehensive documentation tailored to your business type, size, and state requirements.</p>
         </div>
         <div class="services-grid">
@@ -465,7 +472,7 @@
         <div class="section-header">
             <div class="section-label">Simple Pricing</div>
             <h2>Invest in protection, not fines</h2>
-            <p class="section-desc">One-time setup gets you fully compliant. Optional monthly updates keep you that way.</p>
+            <p class="section-desc">One-time setup for your complete compliance documentation. Optional monthly updates help keep you current.</p>
         </div>
         <div class="pricing-grid">
             <div class="pricing-card featured">
@@ -509,7 +516,7 @@
                     <li><span class="check">✓</span> Cancel anytime</li>
                 </ul>
                 <button class="btn btn-secondary" onclick="openCheckout()">Add to Kit</button>
-                <p class="pricing-payment-note" style="color: var(--text-muted);">Less than $3/day for complete peace of mind</p>
+                <p class="pricing-payment-note" style="color: var(--text-muted);">Less than $3/day to help keep your documentation current</p>
             </div>
         </div>
         
@@ -517,7 +524,7 @@
         <div class="guarantee-banner" style="margin-top: 40px;">
             <div class="guarantee-icon">🛡️</div>
             <div class="guarantee-title">60-Day Money-Back Guarantee</div>
-            <p>If you get cited for any violation covered in our documentation within 60 days, you get every penny back. No questions asked.</p>
+            <p>Not satisfied with your compliance documentation? Request a full refund within 60 days of delivery. No questions asked.</p>
         </div>
     </div>
 </section>
@@ -566,11 +573,11 @@
             </div>
             <div class="faq-item">
                 <div class="faq-question">Do you offer refunds?</div>
-                <p class="faq-answer">Absolutely. We offer a 60-day money-back guarantee. If you get cited for any violation covered in our documentation within 60 days, you get every penny back. No questions asked.</p>
+                <p class="faq-answer">Absolutely. We offer a 60-day money-back guarantee. Not satisfied with your compliance documentation? Request a full refund within 60 days of delivery. No questions asked.</p>
             </div>
             <div class="faq-item">
                 <div class="faq-question">What happens when regulations change?</div>
-                <p class="faq-answer">Our optional Compliance Shield monitors changes and automatically updates your manual so you're always current. Choose monthly ($89/mo) or save with annual billing ($890/year — 2 months free). Get your first 30 days free when you add it to your Compliance Kit!</p>
+                <p class="faq-answer">Our optional Compliance Shield monitors changes and updates your manual to help you stay current with evolving regulations. Choose monthly ($89/mo) or save with annual billing ($890/year — 2 months free). Get your first 30 days free when you add it to your Compliance Kit!</p>
             </div>
             <div class="faq-item">
                 <div class="faq-question">Can I pay in installments?</div>
@@ -589,7 +596,7 @@
     <div class="container">
         <div class="section-label" style="color: rgba(255,255,255,0.8);">Get Started Today</div>
         <h2>Ready to protect your business?</h2>
-        <p>Get your free compliance checklist or purchase your kit online. No obligation, no credit card required for the checklist. 60-day money-back guarantee on all kits.</p>
+        <p>Get your free compliance checklist or purchase your kit online. No obligation, no credit card required for the checklist. 60-day satisfaction guarantee on all kits.</p>
         <div class="cta-buttons">
             <a href="/checklist" class="btn btn-primary">Get Free Checklist →</a>
             <button class="btn btn-secondary" onclick="openCheckout()">Buy Now — $997</button>
@@ -622,6 +629,8 @@
             </div>
         </div>
         <div class="footer-bottom">© 2026 Compliance Ghost. All rights reserved. | AI-powered compliance documentation for small businesses.</div>
+        <div class="footer-legal"><a href="/terms.html">Terms of Service</a> &nbsp;|&nbsp; <a href="/privacy.html">Privacy Policy</a></div>
+        <p class="footer-disclaimer">Compliance Ghost provides compliance documentation tools and educational resources only. Our products do not constitute legal advice and are not a substitute for consultation with a qualified attorney or compliance professional.</p>
     </div>
 </footer>
 
@@ -698,6 +707,7 @@
             </button>
             <div class="checkout-guarantee">🛡️ 60-Day Money-Back Guarantee</div>
             <p class="checkout-note">Secure checkout powered by Stripe. You'll be redirected to complete your payment.</p>
+            <p class="checkout-consent">By proceeding, you agree to our <a href="/terms.html">Terms of Service</a> and <a href="/privacy.html">Privacy Policy</a>. Our products provide compliance documentation tools and do not constitute legal advice.</p>
         </div>
     </div>
 </div>
