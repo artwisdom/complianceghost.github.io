@@ -1,0 +1,6 @@
+# Compliance Ghost — https://complianceghost.com
+# All crawlers welcome, including AI assistants (ChatGPT, Claude, Perplexity, Google-Extended).
+User-agent: *
+Allow: /
+
+Sitemap: https://complianceghost.com/sitemap.xml
