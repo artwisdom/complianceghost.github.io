@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17988411942"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'AW-17988411942');
+    </script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Texas Compliance Gap Assessment | Compliance Ghost</title>
+    <meta name="description" content="A free self-assessment for Texas med spas, dental offices, tattoo studios, and esthetician studios. Answer a few questions and see which commonly required documents you may be missing.">
+    <link rel="icon" href="/favicon.ico" sizes="any">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    <meta name="theme-color" content="#1a2744">
+    <link rel="canonical" href="https://complianceghost.com/assessment/">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Compliance Ghost">
+    <meta property="og:title" content="Texas Compliance Gap Assessment | Compliance Ghost">
+    <meta property="og:description" content="A free self-assessment for Texas med spas, dental offices, tattoo studios, and esthetician studios. See which commonly required documents you may be missing.">
+    <meta property="og:url" content="https://complianceghost.com/assessment/">
+    <meta property="og:image" content="https://complianceghost.com/logo.png">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Texas Compliance Gap Assessment | Compliance Ghost">
+    <meta name="twitter:description" content="A free self-assessment for Texas med spas, dental offices, tattoo studios, and esthetician studios.">
+    <meta name="twitter:image" content="https://complianceghost.com/logo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/site.css">
+    <style>
+        .quiz { max-width: 760px; margin: 0 auto; padding: var(--s6) var(--s3) var(--s8); }
+        .quiz-card { background: var(--card); border: 1px solid var(--line); box-shadow: var(--top-light); border-radius: var(--r-md); padding: var(--s4); }
+        .vgrid { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: var(--s2); }
+        .vcard { display: flex; flex-direction: column; align-items: center; gap: var(--s1); text-align: center; background: var(--card); border: 1px solid var(--line); box-shadow: var(--top-light); border-radius: var(--r-md); padding: var(--s3) var(--s2); cursor: pointer; font: inherit; color: inherit; transition: border-color .18s var(--ease), transform .18s var(--ease); }
+        .vcard:hover { border-color: rgba(78,205,196,.35); transform: translateY(-2px); }
+        .vcard .tile { background: var(--teal-glow); color: var(--teal); }
+        .vcard .name { font-weight: 700; color: var(--ink); }
+        .vcard .sub { font-size: var(--t-xs); color: var(--ink-3); line-height: 1.5; }
+
+        .progress-row { display: flex; align-items: center; justify-content: space-between; gap: var(--s2); margin-bottom: var(--s2); font-size: var(--t-xs); color: var(--ink-3); font-variant-numeric: tabular-nums; }
+        .bar { height: 5px; background: rgba(255,255,255,.08); border-radius: var(--r-pill); overflow: hidden; margin-bottom: var(--s4); }
+        .bar > i { display: block; height: 100%; background: var(--teal); border-radius: var(--r-pill); transition: width .3s var(--ease); }
+        @media (prefers-reduced-motion: reduce) { .bar > i { transition: none; } }
+
+        fieldset { border: 0; }
+        legend { font-size: var(--t-h3); font-weight: 700; color: var(--ink); line-height: 1.3; margin-bottom: var(--s1); text-wrap: balance; }
+        .qcite { font-size: var(--t-xs); color: var(--ink-3); margin-bottom: var(--s3); }
+        .answers { display: grid; gap: 10px; margin-bottom: var(--s3); }
+        .answers label { display: flex; align-items: center; gap: var(--s2); padding: 14px 16px; border: 1px solid var(--line-2); border-radius: var(--r-sm); cursor: pointer; font-size: var(--t-sm); color: var(--ink-2); transition: border-color .15s var(--ease), background .15s var(--ease); }
+        .answers label:hover { border-color: rgba(78,205,196,.4); }
+        .answers input { accent-color: #4ecdc4; width: 18px; height: 18px; flex: none; }
+        .answers input:checked + span { color: var(--ink); font-weight: 600; }
+        .answers label:has(input:checked) { border-color: var(--teal); background: var(--teal-wash); }
+        .qnav { display: flex; justify-content: space-between; align-items: center; gap: var(--s2); }
+        .link-btn { background: none; border: 0; color: var(--ink-3); font: inherit; font-size: var(--t-sm); cursor: pointer; padding: 8px; }
+        .link-btn:hover { color: var(--ink); }
+
+        .score-wrap { display: flex; align-items: center; gap: var(--s4); flex-wrap: wrap; justify-content: center; text-align: center; }
+        .dial { position: relative; width: 150px; height: 150px; flex: none; }
+        .dial svg { transform: rotate(-90deg); }
+        .dial .val { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+        .dial .num { font-size: 2.4rem; font-weight: 800; letter-spacing: -.02em; font-variant-numeric: tabular-nums; line-height: 1; }
+        .dial .of { font-size: var(--t-xs); color: var(--ink-3); }
+        .score-note { max-width: 34ch; text-align: left; }
+        .score-note h2 { font-size: var(--t-h3); margin-bottom: 6px; }
+
+        .cats { display: grid; gap: var(--s2); margin: var(--s5) 0; }
+        .cat { display: grid; grid-template-columns: 1fr auto; gap: 4px var(--s2); align-items: center; }
+        .cat .cname { font-size: var(--t-sm); color: var(--ink-2); }
+        .cat .cval { font-size: var(--t-xs); color: var(--ink-3); font-variant-numeric: tabular-nums; }
+        .cat .cbar { grid-column: 1 / -1; height: 6px; background: rgba(255,255,255,.08); border-radius: var(--r-pill); overflow: hidden; }
+        .cat .cbar > i { display: block; height: 100%; border-radius: var(--r-pill); }
+
+        .gap-list { display: grid; gap: var(--s2); margin: var(--s3) 0 0; }
+        .gap { border: 1px solid var(--line); border-left: 3px solid var(--warning); border-radius: var(--r-sm); padding: var(--s2) var(--s3); background: var(--navy-2); }
+        .gap h3 { font-size: var(--t-sm); margin-bottom: 4px; }
+        .gap p { font-size: var(--t-xs); color: var(--ink-3); margin: 0; }
+        .gap .doc { color: var(--teal); }
+
+        .gate { margin-top: var(--s5); background: var(--card); border: 1px solid var(--teal-line); box-shadow: var(--top-light); border-radius: var(--r-md); padding: var(--s4); }
+        .gate h2 { font-size: var(--t-h3); margin-bottom: 6px; }
+        .gate p.sub { font-size: var(--t-sm); color: var(--ink-3); margin-bottom: var(--s3); }
+        .gate label.f { display: block; font-size: var(--t-sm); font-weight: 600; margin-bottom: 6px; }
+        .gate input[type=email], .gate input[type=text] { width: 100%; padding: 13px 16px; background: var(--navy); border: 1px solid var(--line-2); border-radius: var(--r-sm); color: var(--ink); font: inherit; font-size: var(--t-sm); margin-bottom: var(--s2); }
+        .gate input::placeholder { color: var(--ink-3); }
+        .consent { display: flex; gap: 10px; align-items: flex-start; font-size: var(--t-xs); color: var(--ink-3); margin: var(--s2) 0; }
+        .consent input { margin-top: 3px; accent-color: #4ecdc4; }
+        .msg { margin-top: var(--s2); font-size: var(--t-sm); border-radius: var(--r-sm); padding: 12px 14px; }
+        .msg-error { background: rgba(239,68,68,.1); color: #ffbdbd; border: 1px solid rgba(239,68,68,.3); }
+        .msg-error a { color: #fff; }
+
+        .legal { font-size: var(--t-xs); color: var(--ink-3); line-height: 1.6; border-top: 1px solid var(--line); margin-top: var(--s5); padding-top: var(--s3); }
+        .legal strong { color: var(--ink-2); }
+        [hidden] { display: none !important; }
+
+        @media print {
+            .nav, .site-footer, .gate, .skip-link, .qnav, .buybar { display: none !important; }
+            body { background: #fff; color: #000; }
+            .quiz-card, .gap, .cat .cbar { background: #fff; border-color: #ccc; box-shadow: none; }
+            h1, h2, h3, .dial .num, .gap h3 { color: #000 !important; }
+            p, .cat .cname, .gap p, .legal { color: #333 !important; }
+        }
+    </style>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<nav class="nav">
+    <div class="container">
+        <a href="/" class="brand" aria-label="Compliance Ghost — home"><img src="/assets/mark.png" alt="" width="44" height="44"><span class="brand-word"><span>Compliance</span><span>Ghost</span></span></a>
+        <input type="checkbox" id="nav-toggle" class="nav-toggle-input">
+        <label for="nav-toggle" class="nav-toggle" aria-label="Menu">
+            <svg class="ico ico-open" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 6h16M4 12h16M4 18h16"/></svg><svg class="ico ico-close" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M18 6 6 18M6 6l12 12"/></svg>
+        </label>
+        <div class="nav-links">
+            <a href="/#services">Services</a>
+            <a href="/#how-it-works">How It Works</a>
+            <a href="/guides/">Guides</a>
+            <a href="/#pricing">Pricing</a>
+            <a href="/#faq">FAQ</a>
+            <a href="/#pricing" class="nav-cta">Buy Now</a>
+        </div>
+    </div>
+</nav>
+
+<main id="main" class="quiz">
+    <div id="quiz-root" aria-live="polite"></div>
+
+    <p class="legal">
+        <strong>About this assessment.</strong> This is an educational self-assessment based only on the answers you give.
+        It is not legal advice, not an inspection or audit, and not a determination of compliance &mdash; using it does not
+        guarantee compliance with any law. Compliance Ghost's tools and documents are <strong>not a substitute for the advice
+        of an attorney</strong>. For your specific situation, consult the relevant Texas agency (TMB, TDLR, DSHS, TSBDE) or a
+        qualified Texas attorney.
+    </p>
+</main>
+
+<footer class="site-footer">
+    <div class="container">
+        <div class="footer-top">
+            <a href="/" class="brand" aria-label="Compliance Ghost — home"><img src="/assets/mark.png" alt="" width="56" height="56"><span class="brand-word" style="font-size:.9rem"><span>Compliance</span><span>Ghost</span></span></a>
+            <div class="footer-links">
+                <a href="/#services">Services</a>
+                <a href="/#pricing">Pricing</a>
+                <a href="/guides/">Guides</a>
+                <a href="/#faq">FAQ</a>
+                <a href="/compliance-shield/">Compliance Shield</a>
+                <a href="mailto:info@complianceghost.com">Contact</a>
+            </div>
+            <div class="social-links">
+                <a href="https://x.com/Comp_Ghost" target="_blank" rel="noopener" aria-label="Compliance Ghost on X">&#120143;</a>
+                <a href="https://www.facebook.com/profile.php?id=61583069649941" target="_blank" rel="noopener" aria-label="Compliance Ghost on Facebook">f</a>
+                <a href="https://www.linkedin.com/in/compliance-ghost-4b080a391/" target="_blank" rel="noopener" aria-label="Compliance Ghost on LinkedIn">in</a>
+            </div>
+        </div>
+        <div class="footer-contact">
+            <a href="mailto:info@complianceghost.com"><svg class="ico ico-sm" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>info@complianceghost.com</a>
+            <a href="tel:+18558344678"><svg class="ico ico-sm" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>(855) 83-GHOST</a>
+        </div>
+        <div class="footer-bottom">&copy; 2026 Compliance Ghost. All rights reserved. | Texas compliance documentation for small businesses.</div>
+        <div class="footer-legal"><a href="/terms.html">Terms of Service</a> &nbsp;|&nbsp; <a href="/privacy.html">Privacy Policy</a></div>
+        <p class="footer-disclaimer">Compliance Ghost provides compliance documentation tools and educational resources only. Our products do not constitute legal advice and are not a substitute for consultation with a qualified attorney or compliance professional.</p>
+    </div>
+</footer>
+
+<script src="/assets/assessment.js" defer></script>
+<script src="/assets/site.js" defer></script>
+</body>
+</html>

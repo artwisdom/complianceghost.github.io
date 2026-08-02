@@ -108,6 +108,8 @@ strong { font-weight: 700; }
 a { color: var(--teal); }
 a:hover { color: var(--teal-soft); }
 
+[tabindex="-1"]:focus { outline: none; }
+
 :focus-visible {
     outline: 2px solid var(--teal);
     outline-offset: 2px;
@@ -538,6 +540,13 @@ a:hover { color: var(--teal-soft); }
 .gcard p { font-size: var(--t-sm); color: var(--ink-3); }
 .gcard .tile { margin-bottom: var(--s2); }
 
+.related { margin: var(--s6) 0 0; }
+.related h2 { font-size: var(--t-h3); margin-bottom: var(--s3); }
+.related .gcards { grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); }
+.related .gcard { text-decoration: none; display: block; }
+.related .gcard h3 { font-size: var(--t-sm); }
+.related .gcard p { font-size: var(--t-xs); color: var(--teal); }
+
 .cta-block {
     background: var(--card); border: 1px solid var(--teal-line); box-shadow: var(--top-light);
     border-radius: var(--r-md); padding: var(--s4); margin: var(--s6) 0 0; text-align: center;
@@ -581,3 +590,10 @@ details.faq p { margin-top: var(--s1); font-size: var(--t-sm); }
     .article { padding: var(--s4) var(--s3) var(--s7); }
     .inline-cta { flex-direction: column; align-items: flex-start; }
 }
+
+/* Assessment service-gate checkboxes reuse the answer-row look */
+.answers-gate { display: flex; align-items: center; gap: var(--s2); padding: 14px 16px;
+    border: 1px solid var(--line-2); border-radius: var(--r-sm); cursor: pointer;
+    font-size: var(--t-sm); color: var(--ink-2); }
+.answers-gate:hover { border-color: rgba(78,205,196,.4); }
+.answers-gate input { accent-color: #4ecdc4; width: 18px; height: 18px; flex: none; }
