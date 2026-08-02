@@ -55,6 +55,12 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://complianceghost.com/about/</loc>
+    <lastmod>2026-08-02</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://complianceghost.com/guides/</loc>
     <lastmod>2026-07-23</lastmod>
     <changefreq>weekly</changefreq>
