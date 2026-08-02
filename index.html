@@ -286,6 +286,12 @@
         /* ---- Trust band (R11) ---- */
         .trust-band { display: grid; gap: var(--s5); max-width: 1000px; margin: 0 auto; }
         .statute-chips { display: flex; flex-wrap: wrap; gap: var(--s1); justify-content: center; }
+        .quote { max-width: 720px; margin: 0 auto; text-align: center; background: var(--white); border: 1px solid var(--light-line); border-radius: var(--r-md); padding: var(--s5) var(--s4); box-shadow: 0 1px 2px rgba(22,32,58,.05); }
+        .quote-stars { display: flex; gap: 3px; justify-content: center; color: var(--warning); margin-bottom: var(--s2); }
+        .quote blockquote p { font-size: var(--t-lead); color: var(--ink-dark); line-height: 1.55; margin: 0 0 var(--s3); }
+        .quote figcaption { display: flex; flex-direction: column; gap: 2px; }
+        .quote-name { font-weight: 700; color: var(--ink-dark); }
+        .quote-role { font-size: var(--t-sm); color: var(--ink-dark-3); }
         .spec-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--s3); }
         .spec { text-align: center; padding: var(--s3); }
         .spec .num { font-size: var(--t-h2); font-weight: 800; color: var(--ink-dark); letter-spacing: -.02em; font-variant-numeric: tabular-nums; }
@@ -578,6 +584,11 @@
                 <span class="chip chip-teal"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M3 22h18"/><path d="M6 18v-7"/><path d="M10 18v-7"/><path d="M14 18v-7"/><path d="M18 18v-7"/><path d="M12 2 20 7H4z"/></svg> TDLR &amp; DSHS rules</span>
                 <span class="chip chip-teal"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M3 22h18"/><path d="M6 18v-7"/><path d="M10 18v-7"/><path d="M14 18v-7"/><path d="M18 18v-7"/><path d="M12 2 20 7H4z"/></svg> TSBDE rules</span>
             </div>
+            <figure class="quote">
+                <div class="quote-stars" role="img" aria-label="5 out of 5"><svg class="ico ico-sm" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26" fill="currentColor" stroke="none"/></svg><svg class="ico ico-sm" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26" fill="currentColor" stroke="none"/></svg><svg class="ico ico-sm" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26" fill="currentColor" stroke="none"/></svg><svg class="ico ico-sm" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26" fill="currentColor" stroke="none"/></svg><svg class="ico ico-sm" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26" fill="currentColor" stroke="none"/></svg></div>
+                <blockquote><p>I had no idea we were missing half our OSHA documentation. The manual was ready in two days and walked me through everything. Worth every penny for the peace of mind alone.</p></blockquote>
+                <figcaption><span class="quote-name">Jeremy</span><span class="quote-role">Austin tattoo shop owner &middot; Compliance Kit customer</span></figcaption>
+            </figure>
             <div class="spec-row">
                 <div class="card-light spec"><div class="num">48</div><div class="lbl">pages per manual</div></div>
                 <div class="card-light spec"><div class="num">4</div><div class="lbl">Texas industries covered</div></div>
