@@ -2,45 +2,94 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17988411942"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'AW-17988411942');
+    </script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Page Not Found | Compliance Ghost</title>
     <meta name="robots" content="noindex, follow">
-    <link rel="icon" href="/favicon.ico">
+    <link rel="icon" href="/favicon.ico" sizes="any">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    <meta name="theme-color" content="#1a2744">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/site.css">
     <style>
-        *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-        body{
-            font-family:'Plus Jakarta Sans',system-ui,-apple-system,sans-serif;
-            background:#1a2744;color:#fff;min-height:100vh;
-            display:flex;align-items:center;justify-content:center;
-            text-align:center;padding:24px;line-height:1.6;
-        }
-        .wrap{max-width:520px}
-        .logo{height:96px;width:auto;border-radius:12px;margin-bottom:28px}
-        .code{font-size:5rem;font-weight:700;color:#4ecdc4;line-height:1;letter-spacing:-.02em}
-        h1{font-size:1.5rem;margin:12px 0 10px;font-weight:700}
-        p{color:rgba(255,255,255,.75);font-size:1rem;margin-bottom:28px}
-        .actions{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
-        .btn{display:inline-flex;align-items:center;gap:8px;padding:14px 26px;border-radius:8px;font-weight:600;font-size:.95rem;text-decoration:none;transition:transform .2s,background .2s}
-        .btn-primary{background:#2ecc71;color:#fff}
-        .btn-primary:hover{background:#3dd87a;transform:translateY(-2px)}
-        .btn-ghost{background:transparent;color:#4ecdc4;border:1px solid rgba(78,205,196,.4)}
-        .btn-ghost:hover{border-color:#4ecdc4;transform:translateY(-2px)}
-        @media (prefers-reduced-motion:reduce){.btn:hover{transform:none}}
+        .err { text-align: center; padding: var(--s10) 0; }
+        .err .code { font-size: clamp(4rem, 12vw, 6rem); font-weight: 800; color: var(--teal); line-height: 1; letter-spacing: -.03em; }
+        .err h1 { font-size: var(--t-h2); margin: var(--s2) 0 var(--s1); }
+        .err p { max-width: 46ch; margin: 0 auto var(--s5); }
+        .err .actions { display: flex; gap: var(--s2); justify-content: center; flex-wrap: wrap; }
     </style>
 </head>
 <body>
-    <main class="wrap">
-        <a href="/"><img src="/logo.png" alt="Compliance Ghost" class="logo"></a>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<nav class="nav">
+    <div class="container">
+        <a href="/" class="brand" aria-label="Compliance Ghost — home"><img src="/assets/mark.png" alt="" width="44" height="44"><span class="brand-word"><span>Compliance</span><span>Ghost</span></span></a>
+        <input type="checkbox" id="nav-toggle" class="nav-toggle-input">
+        <label for="nav-toggle" class="nav-toggle" aria-label="Menu">
+            <svg class="ico ico-open" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 6h16M4 12h16M4 18h16"/></svg><svg class="ico ico-close" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M18 6 6 18M6 6l12 12"/></svg>
+        </label>
+        <div class="nav-links">
+            <a href="/#services">Services</a>
+            <a href="/#how-it-works">How It Works</a>
+            <a href="/guides/">Guides</a>
+            <a href="/#pricing">Pricing</a>
+            <a href="/#faq">FAQ</a>
+            <a href="/#pricing" class="nav-cta">Buy Now</a>
+        </div>
+    </div>
+</nav>
+
+<main id="main" class="err">
+    <div class="container">
         <div class="code">404</div>
         <h1>This page vanished like a ghost.</h1>
         <p>The page you're looking for doesn't exist or has moved. Let's get you back to protecting your Texas business.</p>
         <div class="actions">
             <a href="/" class="btn btn-primary">Back to Home</a>
-            <a href="/checklist/" class="btn btn-ghost">Free Compliance Gap Assessment</a>
+            <a href="/checklist/" class="btn btn-secondary">Free Gap Assessment</a>
+            <a href="/guides/" class="btn btn-ghost">Texas Compliance Guides</a>
         </div>
-    </main>
+    </div>
+</main>
+
+<footer class="site-footer">
+    <div class="container">
+        <div class="footer-top">
+            <a href="/" class="brand" aria-label="Compliance Ghost — home"><img src="/assets/mark.png" alt="" width="56" height="56"><span class="brand-word" style="font-size:.9rem"><span>Compliance</span><span>Ghost</span></span></a>
+            <div class="footer-links">
+                <a href="/#services">Services</a>
+                <a href="/#pricing">Pricing</a>
+                <a href="/guides/">Guides</a>
+                <a href="/#faq">FAQ</a>
+                <a href="/compliance-shield/">Compliance Shield</a>
+                <a href="mailto:info@complianceghost.com">Contact</a>
+            </div>
+            <div class="social-links">
+                <a href="https://x.com/Comp_Ghost" target="_blank" rel="noopener" aria-label="Compliance Ghost on X">&#120143;</a>
+                <a href="https://www.facebook.com/profile.php?id=61583069649941" target="_blank" rel="noopener" aria-label="Compliance Ghost on Facebook">f</a>
+                <a href="https://www.linkedin.com/in/compliance-ghost-4b080a391/" target="_blank" rel="noopener" aria-label="Compliance Ghost on LinkedIn">in</a>
+            </div>
+        </div>
+        <div class="footer-contact">
+            <a href="mailto:info@complianceghost.com"><svg class="ico ico-sm" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>info@complianceghost.com</a>
+            <a href="tel:+18558344678"><svg class="ico ico-sm" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>(855) 83-GHOST</a>
+        </div>
+        <div class="footer-bottom">&copy; 2026 Compliance Ghost. All rights reserved. | Texas compliance documentation for small businesses.</div>
+        <div class="footer-legal"><a href="/terms.html">Terms of Service</a> &nbsp;|&nbsp; <a href="/privacy.html">Privacy Policy</a></div>
+        <p class="footer-disclaimer">Compliance Ghost provides compliance documentation tools and educational resources only. Our products do not constitute legal advice and are not a substitute for consultation with a qualified attorney or compliance professional.</p>
+    </div>
+</footer>
+
+<script src="/assets/site.js" defer></script>
 </body>
 </html>
