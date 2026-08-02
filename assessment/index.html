@@ -55,7 +55,9 @@
         .answers input { accent-color: #4ecdc4; width: 18px; height: 18px; flex: none; }
         .answers input:checked + span { color: var(--ink); font-weight: 600; }
         .answers label:has(input:checked) { border-color: var(--teal); background: var(--teal-wash); }
-        .qnav { display: flex; justify-content: space-between; align-items: center; gap: var(--s2); }
+        .qnav { display: flex; align-items: center; gap: var(--s1); }
+        .qnav .btn { margin-left: auto; }
+        @media (max-width: 520px) { .qnav { flex-wrap: wrap; } .qnav .btn { width: 100%; order: -1; margin: 0 0 var(--s2); } }
         .link-btn { background: none; border: 0; color: var(--ink-3); font: inherit; font-size: var(--t-sm); cursor: pointer; padding: 8px; }
         .link-btn:hover { color: var(--ink); }
 

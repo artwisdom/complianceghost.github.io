@@ -632,3 +632,4 @@ details.faq p { margin-top: var(--s1); font-size: var(--t-sm); }
     text-decoration: underline; text-underline-offset: 2px;
 }
 .exit-dismiss:hover { color: var(--ink-2); }
+

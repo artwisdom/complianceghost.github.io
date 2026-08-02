@@ -143,7 +143,22 @@
     function save() {
         try { sessionStorage.setItem('cg-quiz', JSON.stringify({ s: S, v: VERSION, t: Date.now() })); } catch (e) {}
     }
+    function arrivedByReload() {
+        try {
+            var nav = performance.getEntriesByType('navigation')[0];
+            if (nav) { return nav.type === 'reload' || nav.type === 'back_forward'; }
+            // Safari <15 and friends
+            return performance.navigation && performance.navigation.type === 1;
+        } catch (e) { return false; }
+    }
+
     function restore() {
+        // Only ever resume a refresh or a back-button return. Following a link
+        // to /assessment/ means "start", so the chooser must come up.
+        if (!arrivedByReload()) {
+            try { sessionStorage.removeItem('cg-quiz'); } catch (e) {}
+            return;
+        }
         try {
             var raw = sessionStorage.getItem('cg-quiz');
             if (!raw) { return; }
@@ -199,6 +214,7 @@
                '<div class="answers">' + opts + '</div></fieldset>' +
                '<div class="qnav">' +
                '<button type="button" class="link-btn" data-act="back">&larr; Back</button>' +
+               '<button type="button" class="link-btn" data-act="restart">Change industry</button>' +
                '<button type="button" class="btn btn-primary" data-act="next"' +
                (S.answers[q.id] ? '' : ' disabled') + '>' +
                (S.i === S.qs.length - 1 ? 'See my results' : 'Continue') + ' &rarr;</button></div></div>';
@@ -380,6 +396,7 @@
             else if (S.screen === 'q') { S.screen = BANKS[S.vertical].gates.length ? 'gates' : 'intro'; render(); }
             else { S.screen = 'intro'; render(); }
         } else if (a === 'restart') {
+            try { sessionStorage.removeItem('cg-quiz'); } catch (err) {}
             S = { screen: 'intro', vertical: null, gates: {}, qs: [], i: 0, answers: {}, started: 0, result: null };
             render();
         } else if (a === 'print') {
