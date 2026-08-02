@@ -191,7 +191,7 @@
           "name": "How much could a violation actually cost me?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "OSHA fines start at $15,625 per incident and can reach $70,000 per serious citation. HIPAA penalties range up to $1.5 million. Our $997 kit costs less than 2% of a single OSHA fine."
+            "text": "Federal OSHA maximums are $16,550 per serious violation and $165,514 per willful or repeated violation (effective January 15, 2026). Texas privacy penalties under Health and Safety Code Section 181.201 run to $250,000 where protected information is used for financial gain, and up to $1.5 million a year for a pattern or practice. The $997 Kit costs less than one serious OSHA citation. These are published maximums, not typical assessments."
           }
         }
       ]
@@ -292,6 +292,13 @@
         .spec .lbl { font-size: var(--t-sm); color: var(--ink-dark-3); }
         .preview-links { display: flex; flex-wrap: wrap; gap: var(--s2); justify-content: center; }
 
+        .vgrid-home { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--s3); }
+        .vtile { padding: var(--s4) var(--s3); text-align: center; text-decoration: none; display: flex; flex-direction: column; align-items: center; }
+        .vtile h3 { font-size: var(--t-base); margin: var(--s2) 0 6px; color: var(--ink); }
+        .vtile p { font-size: var(--t-xs); color: var(--ink-3); flex-grow: 1; margin-bottom: var(--s2); }
+        .vtile-go { font-size: var(--t-sm); font-weight: 700; color: var(--teal); }
+        @media (max-width: 1024px) { .vgrid-home { grid-template-columns: 1fr 1fr; } }
+        @media (max-width: 560px) { .vgrid-home { grid-template-columns: 1fr; } }
         .faq-grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--s2); max-width: 1000px; margin: 0 auto; }
         .faq-item { padding: var(--s3); }
         .faq-question { font-weight: 700; margin-bottom: 6px; color: var(--ink); }
@@ -382,8 +389,8 @@
             <div class="card-light problem-card">
                 <span class="tile tile-danger"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect width="20" height="12" x="2" y="6" rx="2"/><circle cx="12" cy="12" r="2"/><path d="M6 12h.01M18 12h.01"/></svg></span>
                 <h3>Devastating fines</h3>
-                <p>OSHA citations run up to $70,000 each. HIPAA penalties can reach $1.5 million. A single Texas dentist was recently fined $53,000 for common violations.</p>
-                <span class="chip chip-danger">Up to $70K per OSHA citation</span>
+                <p>Federal OSHA maximums run to $16,550 per serious violation and $165,514 for willful or repeated ones. Texas privacy penalties under HB 300 reach $250,000 where records are used for gain &mdash; and $1.5 million a year for a pattern.</p>
+                <span class="chip chip-danger">Up to $165,514 per willful violation</span>
             </div>
             <div class="card-light problem-card">
                 <span class="tile tile-danger"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M15.5 2H8.6c-.4 0-.8.2-1.1.5-.3.3-.5.7-.5 1.1v12.8c0 .4.2.8.5 1.1.3.3.7.5 1.1.5h9.8c.4 0 .8-.2 1.1-.5.3-.3.5-.7.5-1.1V6.5L15.5 2z"/><path d="M3 7.6v12.8c0 .4.2.8.5 1.1.3.3.7.5 1.1.5h9.8"/><path d="M15 2v5h5"/></svg></span>
@@ -398,6 +405,18 @@
                 <span class="chip chip-danger">20+ hours to DIY</span>
             </div>
         </div>
+    </div>
+</section>
+
+
+<section class="section section-dark-2" id="verticals">
+    <div class="container">
+        <div class="section-header">
+            <div class="section-label">Which Business Are You?</div>
+            <h2>Every industry answers to a different agency</h2>
+            <p class="section-desc">Your documentation only helps if it matches the rules that actually apply to you. Pick yours to see what the Kit includes.</p>
+        </div>
+        <div class="vgrid-home"><a class="card card-hover vtile" href="/med-spa/"><span class="tile tile-lg"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m18 2 4 4"/><path d="m17 7 3-3"/><path d="M19 9 8.7 19.3c-1 1-2.5 1-3.4 0l-.6-.6c-1-1-1-2.5 0-3.4L15 5"/><path d="m9 11 4 4"/><path d="m5 19-3 3"/><path d="m14 4 6 6"/></svg></span><h3>Med Spas</h3><p>TMB delegation, injectables, lasers &amp; IV rules</p><span class="vtile-go">See the med spa kit &rarr;</span></a><a class="card card-hover vtile" href="/dental/"><span class="tile tile-lg"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 5.5c-1.5-1.2-3-1.8-4.5-1.5C5.5 4.4 4 6 4 8.5c0 2 .6 3.4 1 5 .5 2 .7 5.5 2.2 5.5 1.3 0 1.4-2.5 1.9-4 .4-1.2.7-2 2.9-2s2.5.8 2.9 2c.5 1.5.6 4 1.9 4 1.5 0 1.7-3.5 2.2-5.5.4-1.6 1-3 1-5 0-2.5-1.5-4.1-3.5-4.5-1.5-.3-3 .3-4.5 1.5z"/></svg></span><h3>Dental Offices</h3><p>TSBDE infection control, radiation &amp; HIPAA</p><span class="vtile-go">See the dental office kit &rarr;</span></a><a class="card card-hover vtile" href="/tattoo/"><span class="tile tile-lg"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="13.5" cy="6.5" r=".5" fill="currentColor"/><circle cx="17.5" cy="10.5" r=".5" fill="currentColor"/><circle cx="8.5" cy="7.5" r=".5" fill="currentColor"/><circle cx="6.5" cy="12.5" r=".5" fill="currentColor"/><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.555-2.503 5.555-5.554C21.965 6.012 17.461 2 12 2z"/></svg></span><h3>Tattoo Studios</h3><p>DSHS licensing, sterilization &amp; client records</p><span class="vtile-go">See the tattoo studio kit &rarr;</span></a><a class="card card-hover vtile" href="/esthetician/"><span class="tile tile-lg"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .962 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.581a.5.5 0 0 1 0 .964L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.962 0z"/></svg></span><h3>Esthetician Studios</h3><p>TDLR sanitation, postings &amp; scope of practice</p><span class="vtile-go">See the esthetician studio kit &rarr;</span></a></div>
     </div>
 </section>
 
@@ -506,7 +525,7 @@
                 </ul>
                 <a href="https://buy.stripe.com/8x25kC33N7cxfgz3zH1Nu04" class="btn btn-primary btn-block" data-checkout="kit">Buy the Kit &mdash; $997</a>
                 <p class="pricing-note">or <a href="https://buy.stripe.com/7sYdR8eMv54p7O76LT1Nu05" data-checkout="kit-installment">3 payments of $349</a></p>
-                <span class="price-anchor"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5"/><path d="M9 18h6"/><path d="M10 22h4"/></svg> Less than 2% of a single OSHA fine</span>
+                <span class="price-anchor"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5"/><path d="M9 18h6"/><path d="M10 22h4"/></svg> Less than one serious OSHA citation</span>
             </div>
 
             <div class="pricing-card featured">
@@ -610,7 +629,7 @@
             </div>
             <div class="card faq-item">
                 <div class="faq-question">How much could a violation actually cost me?</div>
-                <p class="faq-answer">OSHA fines start at $15,625 per incident and can reach $70,000 per serious citation. HIPAA penalties range up to $1.5 million. The $997 Kit costs less than 2% of a single OSHA fine.</p>
+                <p class="faq-answer">Federal OSHA maximums are $16,550 per serious violation and $165,514 per willful or repeated violation (effective January 15, 2026). Texas privacy penalties under Health &amp; Safety Code &sect;181.201 run to $250,000 where protected information is used for financial gain, and up to $1.5 million a year for a pattern or practice. The $997 Kit costs less than one serious OSHA citation. These are published maximums, not typical assessments.</p>
             </div>
         </div>
     </div>
