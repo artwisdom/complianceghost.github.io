@@ -129,3 +129,66 @@
         }
     }
 })();
+
+/* Partner attribution for the Shield attach path.
+ *
+ * A partner-sourced customer arrives on /thanks/ with ?ref=<tag> (their Stripe
+ * links carry it through checkout). Without this, the "Add Shield" button on
+ * that page points at the SITE attach link, so the recurring subscription —
+ * the partner's main income — starts life untagged and pays no commission.
+ *
+ * So: remember the ref for 90 days (the attribution window in the partner
+ * agreement) and point every attach button at that partner's own links.
+ */
+(function partnerAttribution() {
+    'use strict';
+
+    var LINKS = {
+        'partner-01': {
+            monthly: 'https://buy.stripe.com/8x27sK7k3cwR8Sb2vD1Nu0i',
+            annual:  'https://buy.stripe.com/cNi5kCeMv0O97O7c6d1Nu0j'
+        }
+    };
+    var KEY = 'cg-ref';
+    var WINDOW_MS = 90 * 24 * 60 * 60 * 1000;
+
+    function store(available) {
+        try { return window[available] ? window[available] : null; } catch (e) { return null; }
+    }
+    var ls = store('localStorage');
+
+    function remember(ref) {
+        if (!ls) { return; }
+        try { ls.setItem(KEY, JSON.stringify({ ref: ref, ts: Date.now() })); } catch (e) {}
+    }
+
+    function recall() {
+        if (!ls) { return null; }
+        try {
+            var raw = ls.getItem(KEY);
+            if (!raw) { return null; }
+            var v = JSON.parse(raw);
+            if (!v || !v.ref || !v.ts) { return null; }
+            if (Date.now() - v.ts > WINDOW_MS) { ls.removeItem(KEY); return null; }
+            return v.ref;
+        } catch (e) { return null; }
+    }
+
+    var ref = null;
+    try {
+        ref = new URLSearchParams(window.location.search).get('ref');
+    } catch (e) {}
+
+    if (ref && LINKS[ref]) {
+        remember(ref);
+    } else {
+        ref = recall();
+    }
+    if (!ref || !LINKS[ref]) { return; }
+
+    var partner = LINKS[ref];
+    document.querySelectorAll('a[data-shield-attach]').forEach(function (a) {
+        var kind = a.getAttribute('data-shield-attach');
+        if (partner[kind]) { a.href = partner[kind]; }
+    });
+})();

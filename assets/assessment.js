@@ -82,6 +82,7 @@
             gates: [{ id: 'employees', label: 'I have employees (not solo)' }],
             qs: [
                 { id: 'tt01', w: 3, k: 'LIC', q: 'Does the studio hold a current DSHS license for this location, covering the services you actually offer, available for inspection?', c: 'Health & Safety Code Chapter 146; 25 TAC §229.403', d: 'License & Renewal Tracker' },
+                { id: 'tt13', w: 2, k: 'LIC', r: true, q: 'Has every employee completed an approved human trafficking prevention training course, with proof of completion kept on file?', c: 'Health & Safety Code \u00a7146.0075 (HB 1778, 2025) \u2014 required of each employee; no employee could be required to complete it before January 1, 2026', d: 'Human Trafficking Training Log + approved course list' },
                 { id: 'tt02', w: 3, k: 'STER', r: true, q: 'Is every sterilization unit spore-tested every calendar month by a laboratory, with results retained for inspection?', c: '25 TAC §229.407', d: 'Monthly Spore Test Log' },
                 { id: 'tt03', w: 2, k: 'STER', q: 'Do your sterilization records show the date, instruments, and operator initials, retained at least 2 years?', c: '25 TAC §229.407', d: 'Sterilization Log template' },
                 { id: 'tt04', w: 1, k: 'STER', q: 'Does every sterilized package carry a chemical or heat indicator confirming it went through the cycle?', c: '25 TAC §229.407', d: 'Sterilization SOP' },
@@ -335,10 +336,10 @@
 
     function pdfFor(v) {
         return {
-            medspa: '/checklist/pdfs/medspa-gap-assessment.pdf',
-            dental: '/checklist/pdfs/dental-gap-assessment.pdf',
-            tattoo: '/checklist/pdfs/tattoo-gap-assessment.pdf',
-            esthetician: '/checklist/pdfs/aesthetic-gap-assessment.pdf'
+            medspa: '/checklist/pdfs/medspa-gap-assessment-2026-08.pdf',
+            dental: '/checklist/pdfs/dental-gap-assessment-2026-08.pdf',
+            tattoo: '/checklist/pdfs/tattoo-gap-assessment-2026-08.pdf',
+            esthetician: '/checklist/pdfs/aesthetic-gap-assessment-2026-08.pdf'
         }[v];
     }
 
