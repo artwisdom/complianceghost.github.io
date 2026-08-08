@@ -70,8 +70,8 @@
         <div class="step-row">
             <span class="n">1</span>
             <div>
-                <h2>We'll email you an intake form</h2>
-                <p>Within a few hours you'll get a short form asking for your business details — legal name, address, owner, services offered, and staff count. It takes about five minutes.</p>
+                <h2>Fill in your intake form</h2>
+                <p>We need a few details to build your documentation &mdash; legal name, address, owner, services offered, staff count. It takes about five minutes. <strong><a href="/intake/" id="intakeLink">Start it now</a></strong>, or use the link in the email we just sent.</p>
             </div>
         </div>
         <div class="step-row">
@@ -141,6 +141,8 @@
     'use strict';
     var params = new URLSearchParams(location.search);
     var session = params.get('session_id') || '';
+        var intakeLink = document.getElementById('intakeLink');
+        if (intakeLink && session) { intakeLink.href = '/intake/?order=' + encodeURIComponent(session); }
     var kind = params.get('p') || '';           // kit | kit-shield | shield | installment
 
     // Show the Shield offer only to buyers who did NOT already bundle it.

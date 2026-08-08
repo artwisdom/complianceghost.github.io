@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17988411942"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'AW-17988411942');
+    </script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your intake form | Compliance Ghost</title>
+    <meta name="robots" content="noindex, nofollow">
+    <meta name="description" content="The details we need to build your Texas compliance documentation.">
+    <link rel="icon" href="/favicon.ico" sizes="any">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    <meta name="theme-color" content="#1a2744">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/site.css?v=6a720860">
+    <style>
+        .intake { max-width: 760px; margin: 0 auto; padding: var(--s8) var(--s3); }
+        .intake-head { text-align: center; margin-bottom: var(--s5); }
+        .intake-head .tile { margin: 0 auto var(--s3); background: var(--teal-glow); color: var(--teal); }
+        .intake-head p { max-width: 58ch; margin: var(--s2) auto 0; }
+        fieldset { border: 1px solid var(--line); border-radius: var(--r-md); background: var(--card); box-shadow: var(--top-light); padding: var(--s4); margin: 0 0 var(--s3); }
+        legend { font-size: var(--t-base); font-weight: 700; color: var(--ink); padding: 0 10px; }
+        .legend-note { font-size: var(--t-xs); color: var(--ink-3); margin: 0 0 var(--s3); line-height: 1.6; }
+        .form-group { margin-bottom: var(--s3); }
+        .form-group:last-child { margin-bottom: 0; }
+        .form-group label { display: block; font-size: var(--t-sm); font-weight: 600; margin-bottom: 6px; color: var(--ink); }
+        .form-group .optional { color: var(--ink-3); font-weight: 400; }
+        .form-group .hint { display: block; font-size: var(--t-xs); color: var(--ink-3); font-weight: 400; margin-top: 4px; line-height: 1.55; }
+        .form-group input, .form-group select, .form-group textarea {
+            width: 100%; padding: 13px 16px; background: var(--navy); border: 1px solid var(--line-2);
+            border-radius: var(--r-sm); color: var(--ink); font-family: inherit; font-size: var(--t-sm);
+        }
+        .form-group textarea { min-height: 96px; resize: vertical; line-height: 1.6; }
+        .form-group input::placeholder, .form-group textarea::placeholder { color: var(--ink-3); }
+        .form-group input:focus-visible, .form-group select:focus-visible, .form-group textarea:focus-visible { outline: 2px solid var(--teal); outline-offset: 1px; }
+        .row2 { display: grid; grid-template-columns: 1fr 1fr; gap: var(--s3); }
+        .svc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+        .svc { display: flex; gap: 10px; align-items: flex-start; background: var(--navy); border: 1px solid var(--line-2); border-radius: var(--r-sm); padding: 11px 13px; cursor: pointer; }
+        .svc:focus-within { outline: 2px solid var(--teal); outline-offset: 1px; }
+        .svc input { width: 17px; height: 17px; margin-top: 2px; flex: none; accent-color: var(--emerald); }
+        .svc span { font-size: var(--t-sm); color: var(--ink); line-height: 1.45; }
+        .svc span em { display: block; font-style: normal; font-size: var(--t-xs); color: var(--ink-3); margin-top: 2px; }
+        .msg { margin-top: var(--s2); font-size: var(--t-sm); border-radius: var(--r-sm); padding: 12px 14px; }
+        .msg-warn { background: rgba(245,158,11,.1); color: #ffd79a; border: 1px solid rgba(245,158,11,.3); }
+        .msg-error { background: rgba(239,68,68,.1); color: #ffbdbd; border: 1px solid rgba(239,68,68,.3); }
+        .msg-error a { color: #fff; }
+        .success-panel { max-width: 620px; margin: var(--s6) auto 0; text-align: center; background: var(--card); border: 1px solid var(--teal-line); box-shadow: var(--top-light); border-radius: var(--r-md); padding: var(--s5); }
+        .success-panel .tile { margin: 0 auto var(--s3); background: var(--emerald-glow); color: var(--emerald); }
+        .success-panel h2 { font-size: var(--t-h3); margin-bottom: var(--s1); }
+        .privacy-note { font-size: var(--t-xs); color: var(--ink-3); text-align: center; margin-top: var(--s3); line-height: 1.6; }
+        @media (max-width: 640px) { .row2, .svc-grid { grid-template-columns: 1fr; } }
+    </style>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<nav class="nav">
+    <div class="container">
+        <a href="/" class="brand" aria-label="Compliance Ghost — home"><img src="/assets/mark.png" alt="" width="44" height="44"><span class="brand-word"><span>Compliance</span><span>Ghost</span></span></a>
+        <input type="checkbox" id="nav-toggle" class="nav-toggle-input">
+        <label for="nav-toggle" class="nav-toggle" aria-label="Menu">
+            <svg class="ico ico-open" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 6h16M4 12h16M4 18h16"/></svg><svg class="ico ico-close" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M18 6 6 18M6 6l12 12"/></svg>
+        </label>
+        <div class="nav-links">
+            <a href="/#services">Services</a>
+            <a href="/#how-it-works">How It Works</a>
+            <a href="/guides/">Guides</a>
+            <a href="/#faq">FAQ</a>
+        </div>
+    </div>
+</nav>
+
+<main id="main" class="intake">
+    <div class="intake-head">
+        <span class="tile tile-lg"><svg class="ico ico-lg" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M16 13H8M16 17H8M10 9H8"/></svg></span>
+        <h1>Tell us about your business</h1>
+        <p>This is everything we need to build your documentation. It takes about five minutes, and most of it you already know off the top of your head. Anything you are unsure of, leave blank and say so at the end &mdash; we will follow up rather than guess.</p>
+    </div>
+
+    <form id="intakeForm" action="https://formspree.io/f/mbdavkdw" method="POST">
+        <input type="hidden" name="form_type" value="INTAKE — new order">
+        <input type="hidden" name="_subject" value="New Compliance Kit intake">
+        <input type="hidden" name="order_ref" id="orderRef" value="">
+        <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px">
+
+        <fieldset>
+            <legend>The business</legend>
+            <p class="legend-note">Your documents carry your legal name and address, so these need to match what is on your licenses and filings.</p>
+            <div class="form-group">
+                <label for="industry">Industry</label>
+                <select id="industry" name="industry" required>
+                    <option value="">Choose one&hellip;</option>
+                    <option value="Med Spa">Med spa / aesthetic clinic</option>
+                    <option value="Dental Office">Dental office</option>
+                    <option value="Tattoo Studio">Tattoo or body piercing studio</option>
+                    <option value="Esthetician Studio">Esthetician studio / salon</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="legalName">Legal business name<span class="hint">The entity name on your filings, e.g. &ldquo;Glow Aesthetics LLC&rdquo;.</span></label>
+                <input type="text" id="legalName" name="legal_name" required>
+            </div>
+            <div class="form-group">
+                <label for="dba">Name you trade under <span class="optional">(if different)</span></label>
+                <input type="text" id="dba" name="dba">
+            </div>
+            <div class="form-group">
+                <label for="address">Street address of the location</label>
+                <input type="text" id="address" name="address" required>
+            </div>
+            <div class="row2">
+                <div class="form-group">
+                    <label for="city">City</label>
+                    <input type="text" id="city" name="city" required>
+                </div>
+                <div class="form-group">
+                    <label for="zip">ZIP</label>
+                    <input type="text" id="zip" name="zip" inputmode="numeric" required>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="locations">Number of locations this Kit covers<span class="hint">One set of documents covers one location. Tell us if you need more and we will sort it out.</span></label>
+                <input type="number" id="locations" name="locations" min="1" value="1">
+            </div>
+        </fieldset>
+
+        <fieldset>
+            <legend>People and roles</legend>
+            <p class="legend-note">Several documents have to name a specific person &mdash; a privacy officer, a safety coordinator, a delegating physician. If one person wears several hats, just repeat the name.</p>
+            <div class="row2">
+                <div class="form-group">
+                    <label for="ownerName">Owner / principal</label>
+                    <input type="text" id="ownerName" name="owner_name" required>
+                </div>
+                <div class="form-group">
+                    <label for="ownerTitle">Their title</label>
+                    <input type="text" id="ownerTitle" name="owner_title" placeholder="e.g. Owner, Practice Manager">
+                </div>
+            </div>
+            <div class="row2">
+                <div class="form-group">
+                    <label for="email">Email for delivery</label>
+                    <input type="email" id="email" name="email" autocomplete="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="phone">Phone</label>
+                    <input type="tel" id="phone" name="phone" autocomplete="tel">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="staffCount">How many people work there, including you?</label>
+                <input type="number" id="staffCount" name="staff_count" min="1" required>
+            </div>
+            <div class="row2">
+                <div class="form-group">
+                    <label for="privacyOfficer">Privacy officer <span class="optional">(if named)</span><span class="hint">Who handles patient records questions. Leave blank and we will mark it for you to fill in.</span></label>
+                    <input type="text" id="privacyOfficer" name="privacy_officer">
+                </div>
+                <div class="form-group">
+                    <label for="safetyCoord">Safety coordinator <span class="optional">(if named)</span><span class="hint">Who owns OSHA training and the exposure plan.</span></label>
+                    <input type="text" id="safetyCoord" name="safety_coordinator">
+                </div>
+            </div>
+            <div class="row2" id="mdBlock" hidden>
+                <div class="form-group">
+                    <label for="mdName">Delegating / medical director physician</label>
+                    <input type="text" id="mdName" name="medical_director">
+                </div>
+                <div class="form-group">
+                    <label for="mdLicense">Their Texas medical license number</label>
+                    <input type="text" id="mdLicense" name="md_license">
+                </div>
+            </div>
+        </fieldset>
+
+        <fieldset>
+            <legend>What you actually do</legend>
+            <p class="legend-note">This decides which protocols, consents, and logs belong in your Kit. Tick everything you offer &mdash; leaving one out means a missing document, and ticking one you do not do just adds paperwork you will not use.</p>
+            <div class="svc-grid" id="svcGrid"></div>
+            <div class="form-group" style="margin-top:var(--s3)">
+                <label for="otherServices">Anything else you offer that is not listed <span class="optional">(optional)</span></label>
+                <input type="text" id="otherServices" name="other_services">
+            </div>
+        </fieldset>
+
+        <fieldset>
+            <legend>Vendors and disposal</legend>
+            <p class="legend-note">Vendors that touch patient information need a signed agreement, and we prepare those with the vendor named. If you do not use one, write &ldquo;none&rdquo;.</p>
+            <div class="row2">
+                <div class="form-group">
+                    <label for="emr">Records / charting system<span class="hint">e.g. Aesthetic Record, Boulevard, Dentrix, paper</span></label>
+                    <input type="text" id="emr" name="emr_vendor">
+                </div>
+                <div class="form-group">
+                    <label for="booking">Booking or scheduling software</label>
+                    <input type="text" id="booking" name="booking_vendor">
+                </div>
+            </div>
+            <div class="row2">
+                <div class="form-group">
+                    <label for="photos">Where client photos are stored <span class="optional">(if you take them)</span></label>
+                    <input type="text" id="photos" name="photo_storage">
+                </div>
+                <div class="form-group">
+                    <label for="waste">Sharps / medical waste company <span class="optional">(if applicable)</span></label>
+                    <input type="text" id="waste" name="waste_transporter">
+                </div>
+            </div>
+        </fieldset>
+
+        <fieldset>
+            <legend>What you already have</legend>
+            <p class="legend-note">Be honest here &mdash; it changes nothing about the price and it means we can flag what to do first. &ldquo;Nothing&rdquo; is a perfectly normal answer.</p>
+            <div class="form-group">
+                <label for="existing">Documents you already have in place <span class="optional">(optional)</span></label>
+                <textarea id="existing" name="existing_docs" placeholder="e.g. we have consent forms and an OSHA plan from 2019, nothing else"></textarea>
+            </div>
+            <div class="form-group">
+                <label for="deadline">Any inspection, renewal, or deadline coming up? <span class="optional">(optional)</span></label>
+                <input type="text" id="deadline" name="deadline" placeholder="e.g. TDLR renewal in October">
+            </div>
+            <div class="form-group">
+                <label for="notes">Anything else we should know <span class="optional">(optional)</span></label>
+                <textarea id="notes" name="notes" placeholder="Questions, things you were unsure of above, anything unusual about how you operate"></textarea>
+            </div>
+        </fieldset>
+
+        <button type="submit" class="btn btn-primary btn-block btn-lg" id="submitBtn">Send this to Compliance Ghost &rarr;</button>
+        <p class="msg msg-warn" id="validationMsg" role="status" hidden>Please choose at least one service above so we know which protocols you need.</p>
+        <p class="msg msg-error" id="errorMsg" role="alert" hidden>Something went wrong sending that. Please email it to <a href="mailto:info@complianceghost.com">info@complianceghost.com</a> and we will take it from there.</p>
+        <p class="privacy-note">We use these details only to prepare your documentation. See our <a href="/privacy.html">privacy policy</a>.</p>
+    </form>
+
+    <div class="success-panel" id="successPanel" hidden tabindex="-1">
+        <span class="tile tile-lg"><svg class="ico ico-lg" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg></span>
+        <h2>Got it &mdash; thank you</h2>
+        <p>That is everything we need. Your documentation is being prepared now and will arrive by email within 48 hours, along with an implementation guide telling you what to sign, post, and file first.</p>
+        <p style="font-size:var(--t-sm);color:var(--ink-3)">If anything you sent needs clarifying, we will email you rather than guess. Questions in the meantime: <a href="mailto:info@complianceghost.com">info@complianceghost.com</a></p>
+    </div>
+</main>
+
+<footer class="site-footer">
+    <div class="container">
+        <div class="footer-bottom">
+            <p>&copy; 2026 Compliance Ghost. Compliance documentation and educational resources only &mdash; not legal advice.</p>
+        </div>
+    </div>
+</footer>
+
+<script src="/assets/site.js?v=135221ca"></script>
+<script>
+(function () {
+    'use strict';
+
+    /* Services differ per industry, and the wrong list is worse than a long one:
+       a missed service means a missing protocol in the delivered Kit. */
+    var SERVICES = {
+        'Med Spa': [
+            ['injectables', 'Injectables', 'Botox, dermal filler'],
+            ['iv', 'IV therapy or hydration', 'Rules changed September 2025'],
+            ['laser', 'Laser or IPL', 'Includes laser hair removal'],
+            ['peels', 'Chemical peels', ''],
+            ['microneedling', 'Microneedling', 'Medical or cosmetic depth'],
+            ['weightloss', 'Weight management / GLP-1', ''],
+            ['hormone', 'Hormone therapy', ''],
+            ['facials', 'Facials and esthetics', '']
+        ],
+        'Dental Office': [
+            ['general', 'General dentistry', ''],
+            ['sedation', 'Sedation or anesthesia', 'Any level, including nitrous'],
+            ['xray', 'X-rays on site', 'Intraoral, pan, or cone-beam'],
+            ['amalgam', 'Placing or removing amalgam', ''],
+            ['surgical', 'Oral surgery or implants', ''],
+            ['ortho', 'Orthodontics', ''],
+            ['hygiene', 'Dental hygiene', ''],
+            ['lab', 'On-site lab work', '']
+        ],
+        'Tattoo Studio': [
+            ['tattoo', 'Tattooing', ''],
+            ['piercing', 'Body piercing', 'Different consent rules apply'],
+            ['permanent', 'Permanent cosmetics', 'Microblading, cosmetic tattoo'],
+            ['minors', 'Cover-up work involving minors', 'The narrow legal exception'],
+            ['guest', 'Guest artists', ''],
+            ['booth', 'Booth renters', '']
+        ],
+        'Esthetician Studio': [
+            ['facials', 'Facials and skin treatments', ''],
+            ['waxing', 'Waxing or hair removal', ''],
+            ['peels', 'Chemical peels', 'Superficial only'],
+            ['microneedling', 'Microneedling', 'Depth determines the rules'],
+            ['lashes', 'Lash and brow services', ''],
+            ['nails', 'Nail services', ''],
+            ['footspa', 'Foot spas or pedicure basins', 'Requires a TDLR-format log'],
+            ['booth', 'Booth renters', '']
+        ]
+    };
+
+    var industry = document.getElementById('industry');
+    var grid = document.getElementById('svcGrid');
+    var mdBlock = document.getElementById('mdBlock');
+    var form = document.getElementById('intakeForm');
+    var vMsg = document.getElementById('validationMsg');
+    var eMsg = document.getElementById('errorMsg');
+    var btn = document.getElementById('submitBtn');
+    var panel = document.getElementById('successPanel');
+
+    /* Carry any order reference through from the thank-you page. */
+    try {
+        var sid = new URLSearchParams(window.location.search).get('order');
+        if (sid) { document.getElementById('orderRef').value = sid; }
+    } catch (e) {}
+
+    function renderServices() {
+        var list = SERVICES[industry.value] || [];
+        grid.innerHTML = list.map(function (s) {
+            return '<label class="svc"><input type="checkbox" name="services" value="' + s[1] + '">' +
+                   '<span>' + s[1] + (s[2] ? '<em>' + s[2] + '</em>' : '') + '</span></label>';
+        }).join('');
+        /* Only med spas and esthetician studios doing medical-depth work need a
+           delegating physician on the paperwork. */
+        mdBlock.hidden = !(industry.value === 'Med Spa' || industry.value === 'Esthetician Studio');
+        vMsg.hidden = true;
+    }
+
+    industry.addEventListener('change', renderServices);
+    renderServices();
+
+    form.addEventListener('submit', function (ev) {
+        ev.preventDefault();
+        vMsg.hidden = true;
+        eMsg.hidden = true;
+
+        if (!grid.querySelector('input:checked')) {
+            vMsg.hidden = false;
+            vMsg.scrollIntoView({ block: 'center', behavior: 'smooth' });
+            return;
+        }
+
+        btn.disabled = true;
+        btn.textContent = 'Sending…';
+
+        fetch(form.action, {
+            method: 'POST',
+            body: new FormData(form),
+            headers: { Accept: 'application/json' }
+        }).then(function (res) {
+            if (!res.ok) { throw new Error('bad status'); }
+            form.hidden = true;
+            panel.hidden = false;
+            panel.focus();
+            if (typeof gtag === 'function') {
+                gtag('event', 'intake_submitted', { industry: industry.value });
+            }
+        }).catch(function () {
+            eMsg.hidden = false;
+            btn.disabled = false;
+            btn.textContent = 'Send this to Compliance Ghost →';
+        });
+    });
+})();
+</script>
+</body>
+</html>
