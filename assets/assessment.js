@@ -297,7 +297,7 @@
     function gateBlock() {
         return '<div class="gate" id="gate">' +
             '<h2>Get your full action plan</h2>' +
-            '<p class="sub">Every gap above, what the rule asks for, and which document closes it &mdash; emailed to you, plus your industry’s gap assessment PDF.</p>' +
+            '<p class="sub">Every gap above, what the rule asks for, and which document closes it. Your plan opens on this page &mdash; save it, print it, or download your industry’s gap assessment PDF.</p>' +
             '<form id="planForm" action="' + FORMSPREE + '" method="POST">' +
             '<input type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px">' +
             '<label class="f" for="qemail">Email address</label>' +
@@ -305,9 +305,9 @@
             '<label class="f" for="qbiz">Business name <span style="color:var(--ink-3);font-weight:400">(optional)</span></label>' +
             '<input type="text" id="qbiz" name="businessName" placeholder="e.g. Glow Aesthetics" autocomplete="organization">' +
             '<label class="consent"><input type="checkbox" name="consent_marketing" value="yes">' +
-            '<span>Send me occasional Texas compliance updates. (Your action plan is sent either way.)</span></label>' +
-            '<button type="submit" class="btn btn-primary btn-block" id="planBtn">Send my action plan &rarr;</button>' +
-            '<p class="msg msg-error" id="qerr" role="alert" hidden>We couldn’t send that just now. Please try again, or email <a href="mailto:info@complianceghost.com">info@complianceghost.com</a> and we’ll send your plan over.</p>' +
+            '<span>Send me occasional Texas compliance updates as Texas rules change.</span></label>' +
+            '<button type="submit" class="btn btn-primary btn-block" id="planBtn">Show my full action plan &rarr;</button>' +
+            '<p class="msg msg-error" id="qerr" role="alert" hidden>We couldn’t save that just now — please try again. If it keeps failing, email <a href="mailto:info@complianceghost.com">info@complianceghost.com</a> and we’ll help.</p>' +
             '<p style="font-size:var(--t-xs);color:var(--ink-3);margin-top:12px;text-align:center">No spam, ever. See our <a href="/privacy.html">Privacy Policy</a>.</p>' +
             '</form></div>';
     }
@@ -461,7 +461,7 @@
             .then(function () {
                 clearTimeout(timer);
                 btn.disabled = false;
-                btn.innerHTML = 'Send my action plan &rarr;';
+                btn.innerHTML = 'Show my full action plan &rarr;';
             });
     });
 
