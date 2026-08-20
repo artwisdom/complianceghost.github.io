@@ -37,7 +37,10 @@ LOW = {"/privacy.html", "/terms.html"}
 # "last commit that touched this file" makes every page look edited on the same
 # day. That is just as misleading as a stale date. Walk back until we find a
 # commit that changed something a reader would notice.
-MECHANICAL = re.compile(r'^[+-].*?(\?v=[a-f0-9]{6,}|<lastmod>)')
+# Asset-version churn, sitemap dates, and analytics tag lines are all changes a
+# reader would never notice — none of them should reset a page's lastmod.
+MECHANICAL = re.compile(
+    r'^[+-].*?(\?v=[a-f0-9]{6,}|<lastmod>|gtag\(|dataLayer|googletagmanager)')
 
 
 def _is_content_change(sha, path):
